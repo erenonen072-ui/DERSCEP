@@ -1,35 +1,15 @@
-```html
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="theme-color"
-    content="#2563eb"
-  >
-
-  <meta
-    name="description"
-    content="DersCep tüm ders notları. 5. sınıftan 12. sınıfa kadar ders notlarını ara, filtrele ve keşfet."
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="DersCep tüm ders notları. 5. sınıftan 12. sınıfa kadar ders notlarını ara, filtrele ve keşfet.">
   <title>Tüm Ders Notları | DersCep</title>
 
-  <link
-    rel="stylesheet"
-    href="css/style.css"
-  >
+  <link rel="stylesheet" href="./css/style.css">
 
   <style>
-
     /* ==================================================
        SAYFA
     ================================================== */
@@ -38,617 +18,358 @@
       padding: 45px 0 90px;
     }
 
-
-    /* ==================================================
-       ÜST BAŞLIK
-    ================================================== */
-
     .notes-header {
       margin-bottom: 30px;
     }
 
     .notes-header h1 {
-
-      font-size:
-        clamp(34px, 5vw, 52px);
-
+      font-size: clamp(34px, 5vw, 52px);
       line-height: 1.05;
-
       letter-spacing: -2px;
-
       margin-bottom: 10px;
-
     }
 
     .notes-header p {
-
       color: var(--muted);
-
       max-width: 700px;
-
       line-height: 1.6;
-
     }
-
 
     /* ==================================================
        ARAMA
     ================================================== */
 
     .search-box {
-
       position: relative;
-
       margin-bottom: 20px;
-
     }
 
     .search-box input {
-
       width: 100%;
-
       height: 58px;
-
-      padding:
-        0 20px 0 52px;
-
-      border:
-        1px solid var(--border);
-
+      padding: 0 20px 0 52px;
+      border: 1px solid var(--border);
       border-radius: 16px;
-
       background: var(--surface);
-
       color: var(--text);
-
       outline: none;
-
       font-size: 15px;
-
-      transition:
-        border-color .2s ease,
-        box-shadow .2s ease;
-
+      transition: .2s ease;
+      box-sizing: border-box;
     }
 
     .search-box input:focus {
-
-      border-color:
-        var(--primary);
-
-      box-shadow:
-        0 0 0 4px
-        var(--primary-light);
-
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
     }
 
     .search-icon {
-
       position: absolute;
-
       left: 18px;
-
       top: 50%;
-
-      transform:
-        translateY(-50%);
-
+      transform: translateY(-50%);
       font-size: 20px;
-
       pointer-events: none;
-
     }
-
 
     /* ==================================================
        FİLTRELER
     ================================================== */
 
     .filters {
-
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-
       margin-bottom: 30px;
-
     }
 
     .filter-group {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 6px;
-
     }
 
     .filter-group label {
-
       font-size: 12px;
-
       font-weight: 700;
-
       color: var(--muted);
-
     }
 
     .filter-group select {
-
       width: 100%;
-
       height: 46px;
-
-      padding:
-        0 12px;
-
-      border:
-        1px solid var(--border);
-
+      padding: 0 12px;
+      border: 1px solid var(--border);
       border-radius: 12px;
-
-      background:
-        var(--surface);
-
-      color:
-        var(--text);
-
+      background: var(--surface);
+      color: var(--text);
       outline: none;
-
       cursor: pointer;
-
+      box-sizing: border-box;
     }
 
     .filter-group select:focus {
-
-      border-color:
-        var(--primary);
-
+      border-color: var(--primary);
     }
-
 
     /* ==================================================
        SONUÇ BAR
     ================================================== */
 
     .results-bar {
-
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       align-items: center;
-
       gap: 15px;
-
       margin-bottom: 18px;
-
     }
 
     .results-count {
-
       font-size: 14px;
-
       color: var(--muted);
-
     }
 
     .results-count strong {
-
       color: var(--text);
-
     }
-
 
     .clear-filters {
-
       border: 0;
-
-      background:
-        transparent;
-
-      color:
-        var(--primary);
-
+      background: transparent;
+      color: var(--primary);
       font-weight: 700;
-
       cursor: pointer;
-
       font-size: 13px;
-
     }
-
 
     /* ==================================================
        NOT GRID
     ================================================== */
 
     .notes-grid {
-
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-
     }
-
 
     /* ==================================================
        NOT KARTI
     ================================================== */
 
     .note-card {
-
       position: relative;
-
       display: flex;
-
       flex-direction: column;
-
       min-height: 290px;
-
       padding: 22px;
-
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 18px;
-
-      background:
-        var(--surface);
-
-      box-shadow:
-        var(--shadow);
-
+      background: var(--surface);
+      box-shadow: var(--shadow);
       transition:
         transform .2s ease,
         border-color .2s ease,
         box-shadow .2s ease;
-
+      cursor: pointer;
     }
 
     .note-card:hover {
-
-      transform:
-        translateY(-4px);
-
-      border-color:
-        var(--primary);
-
-      box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.09);
-
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 35px rgba(0,0,0,.09);
     }
-
-
-    /* ==================================================
-       NOT ÜST
-    ================================================== */
 
     .note-top {
-
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       align-items: flex-start;
-
       gap: 10px;
-
       margin-bottom: 15px;
-
     }
-
 
     .note-icon {
-
       width: 52px;
-
       height: 52px;
-
       display: grid;
-
       place-items: center;
-
       border-radius: 15px;
-
-      background:
-        var(--primary-light);
-
+      background: var(--primary-light);
       font-size: 25px;
-
     }
 
-
     .favorite-btn {
-
       width: 38px;
-
       height: 38px;
-
       display: grid;
-
       place-items: center;
-
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 11px;
-
-      background:
-        var(--background);
-
-      color:
-        var(--muted);
-
+      background: var(--background);
+      color: var(--muted);
       cursor: pointer;
-
       font-size: 18px;
-
-      transition:
-        .2s ease;
-
+      transition: .2s ease;
     }
 
     .favorite-btn:hover {
-
-      border-color:
-        var(--primary);
-
-      color:
-        var(--primary);
-
+      border-color: #ef4444;
+      color: #ef4444;
     }
 
     .favorite-btn.active {
-
-      color:
-        #ef4444;
-
-      border-color:
-        #ef4444;
-
-      background:
-        rgba(239,68,68,.08);
-
+      color: #ef4444;
+      border-color: #ef4444;
+      background: rgba(239,68,68,.08);
     }
 
-
-    /* ==================================================
-       META
-    ================================================== */
-
     .note-meta {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 6px;
-
       margin-bottom: 11px;
-
     }
 
     .note-meta span {
-
-      padding:
-        5px 8px;
-
+      padding: 5px 8px;
       border-radius: 7px;
-
-      background:
-        var(--background);
-
-      color:
-        var(--muted);
-
+      background: var(--background);
+      color: var(--muted);
       font-size: 11px;
-
       font-weight: 650;
-
     }
-
-
-    /* ==================================================
-       BAŞLIK
-    ================================================== */
 
     .note-card h2 {
-
       font-size: 19px;
-
       line-height: 1.3;
-
       margin-bottom: 9px;
-
     }
-
 
     .note-card-description {
-
-      color:
-        var(--muted);
-
+      color: var(--muted);
       font-size: 13px;
-
       line-height: 1.55;
-
       margin-bottom: 15px;
-
     }
-
-
-    /* ==================================================
-       FOOTER
-    ================================================== */
 
     .note-card-footer {
-
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       align-items: center;
-
       gap: 10px;
-
       margin-top: auto;
-
       padding-top: 15px;
-
-      border-top:
-        1px solid var(--border);
-
+      border-top: 1px solid var(--border);
     }
-
 
     .note-stats {
-
       display: flex;
-
       gap: 10px;
-
-      color:
-        var(--muted);
-
+      color: var(--muted);
       font-size: 11px;
-
     }
-
 
     .note-open {
-
-      color:
-        var(--primary);
-
+      color: var(--primary);
       font-size: 12px;
-
       font-weight: 750;
-
     }
 
-
     /* ==================================================
-       BOŞ SONUÇ
+       BOŞ
     ================================================== */
 
     .empty-state {
-
       display: none;
-
       text-align: center;
-
       padding: 80px 20px;
-
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 20px;
-
-      background:
-        var(--surface);
-
+      background: var(--surface);
     }
 
     .empty-state.show {
-
       display: block;
-
     }
 
     .empty-icon {
-
       font-size: 50px;
-
       margin-bottom: 12px;
-
     }
 
     .empty-state p {
-
-      color:
-        var(--muted);
-
-      margin:
-        8px 0 20px;
-
+      color: var(--muted);
+      margin: 8px 0 20px;
     }
 
+    /* ==================================================
+       HATA
+    ================================================== */
+
+    .data-error {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 35px 25px;
+      text-align: center;
+      border: 1px solid #fecaca;
+      border-radius: 18px;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .data-error.show {
+      display: block;
+    }
+
+    .data-error h2 {
+      margin-bottom: 10px;
+    }
+
+    .data-error code {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #fee2e2;
+      font-size: 13px;
+    }
 
     /* ==================================================
        MOBİL
     ================================================== */
 
     @media (max-width: 950px) {
-
       .notes-grid {
-
-        grid-template-columns:
-          repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
       }
-
     }
 
-
     @media (max-width: 700px) {
-
       .filters {
-
         grid-template-columns: 1fr;
-
       }
 
       .notes-grid {
-
         grid-template-columns: 1fr;
-
       }
 
       .results-bar {
-
-        align-items:
-          flex-start;
-
+        align-items: flex-start;
       }
-
     }
 
-
     @media (max-width: 500px) {
-
       .notes-page {
-
         padding-top: 30px;
-
       }
 
       .note-card {
-
         min-height: 270px;
-
       }
-
     }
-
   </style>
-
 </head>
 
-
 <body>
-
 
 <!-- ==================================================
      HEADER
@@ -658,13 +379,11 @@
 
   <div class="container navbar">
 
-
     <a
       href="index.html"
       class="logo"
       aria-label="DersCep Ana Sayfa"
     >
-
       <div class="logo-icon">
         📚
       </div>
@@ -672,15 +391,12 @@
       <div>
         Ders<span>Cep</span>
       </div>
-
     </a>
-
 
     <nav
       class="nav-links"
       aria-label="Ana menü"
     >
-
       <a href="index.html">
         Ana Sayfa
       </a>
@@ -699,9 +415,7 @@
       >
         Tüm Notlar
       </a>
-
     </nav>
-
 
     <div class="nav-actions">
 
@@ -713,7 +427,6 @@
       >
         🌙
       </button>
-
 
       <button
         class="icon-button mobile-menu"
@@ -728,7 +441,6 @@
     </div>
 
   </div>
-
 
   <nav
     class="mobile-nav"
@@ -756,7 +468,6 @@
 </header>
 
 
-
 <!-- ==================================================
      MAIN
 ================================================== -->
@@ -765,288 +476,285 @@
 
 <section class="notes-page">
 
-  <div class="container">
+<div class="container">
 
+  <div class="notes-header">
 
-    <!-- BAŞLIK -->
+    <h1>
+      Tüm Ders Notları
+    </h1>
 
-    <div class="notes-header">
+    <p>
+      5. sınıftan 12. sınıfa kadar
+      istediğin ders notunu ara,
+      filtrele ve keşfet.
+    </p>
 
-      <h1>
-        Tüm Ders Notları
-      </h1>
+  </div>
 
-      <p>
-        5. sınıftan 12. sınıfa kadar
-        istediğin ders notunu ara,
-        filtrele ve keşfet.
-      </p>
 
-    </div>
+  <!-- ARAMA -->
 
+  <div class="search-box">
 
-    <!-- ==================================================
-         ARAMA
-    ================================================== -->
+    <span class="search-icon">
+      🔎
+    </span>
 
-    <div class="search-box">
-
-      <span class="search-icon">
-        🔎
-      </span>
-
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="Not, ders veya konu ara..."
-        autocomplete="off"
-      >
-
-    </div>
-
-
-    <!-- ==================================================
-         FİLTRELER
-    ================================================== -->
-
-    <div class="filters">
-
-
-      <!-- SINIF -->
-
-      <div class="filter-group">
-
-        <label for="gradeFilter">
-          Sınıf
-        </label>
-
-        <select id="gradeFilter">
-
-          <option value="">
-            Tüm Sınıflar
-          </option>
-
-          <option value="5. Sınıf">
-            5. Sınıf
-          </option>
-
-          <option value="6. Sınıf">
-            6. Sınıf
-          </option>
-
-          <option value="7. Sınıf">
-            7. Sınıf
-          </option>
-
-          <option value="8. Sınıf">
-            8. Sınıf
-          </option>
-
-          <option value="9. Sınıf">
-            9. Sınıf
-          </option>
-
-          <option value="10. Sınıf">
-            10. Sınıf
-          </option>
-
-          <option value="11. Sınıf">
-            11. Sınıf
-          </option>
-
-          <option value="12. Sınıf">
-            12. Sınıf
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <!-- DERS -->
-
-      <div class="filter-group">
-
-        <label for="subjectFilter">
-          Ders
-        </label>
-
-        <select id="subjectFilter">
-
-          <option value="">
-            Tüm Dersler
-          </option>
-
-          <option value="Türkçe">
-            Türkçe
-          </option>
-
-          <option value="Matematik">
-            Matematik
-          </option>
-
-          <option value="Fen Bilimleri">
-            Fen Bilimleri
-          </option>
-
-          <option value="Sosyal Bilgiler">
-            Sosyal Bilgiler
-          </option>
-
-          <option value="İngilizce">
-            İngilizce
-          </option>
-
-          <option value="Türk Dili ve Edebiyatı">
-            Türk Dili ve Edebiyatı
-          </option>
-
-          <option value="Fizik">
-            Fizik
-          </option>
-
-          <option value="Kimya">
-            Kimya
-          </option>
-
-          <option value="Biyoloji">
-            Biyoloji
-          </option>
-
-          <option value="Tarih">
-            Tarih
-          </option>
-
-          <option value="Coğrafya">
-            Coğrafya
-          </option>
-
-          <option value="Din Kültürü">
-            Din Kültürü
-          </option>
-
-          <option value="Felsefe">
-            Felsefe
-          </option>
-
-          <option value="Bilişim">
-            Bilişim
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <!-- SIRALAMA -->
-
-      <div class="filter-group">
-
-        <label for="sortFilter">
-          Sırala
-        </label>
-
-        <select id="sortFilter">
-
-          <option value="new">
-            En Yeni
-          </option>
-
-          <option value="popular">
-            En Çok Görüntülenen
-          </option>
-
-          <option value="az">
-            A → Z
-          </option>
-
-          <option value="za">
-            Z → A
-          </option>
-
-        </select>
-
-      </div>
-
-
-    </div>
-
-
-    <!-- ==================================================
-         SONUÇ BAR
-    ================================================== -->
-
-    <div class="results-bar">
-
-      <div
-        class="results-count"
-        id="resultsCount"
-      >
-        Notlar yükleniyor...
-      </div>
-
-
-      <button
-        class="clear-filters"
-        id="clearFilters"
-        type="button"
-      >
-        Filtreleri Temizle
-      </button>
-
-    </div>
-
-
-    <!-- ==================================================
-         NOTLAR
-    ================================================== -->
-
-    <div
-      class="notes-grid"
-      id="notesGrid"
-    >
-    </div>
-
-
-    <!-- ==================================================
-         BOŞ
-    ================================================== -->
-
-    <div
-      class="empty-state"
-      id="emptyState"
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Not, ders veya konu ara..."
+      autocomplete="off"
     >
 
-      <div class="empty-icon">
-        🔍
-      </div>
+  </div>
+
+
+  <!-- FİLTRELER -->
+
+  <div class="filters">
+
+    <div class="filter-group">
+
+      <label for="gradeFilter">
+        Sınıf
+      </label>
+
+      <select id="gradeFilter">
+
+        <option value="">
+          Tüm Sınıflar
+        </option>
+
+        <option value="5. Sınıf">
+          5. Sınıf
+        </option>
+
+        <option value="6. Sınıf">
+          6. Sınıf
+        </option>
+
+        <option value="7. Sınıf">
+          7. Sınıf
+        </option>
+
+        <option value="8. Sınıf">
+          8. Sınıf
+        </option>
+
+        <option value="9. Sınıf">
+          9. Sınıf
+        </option>
+
+        <option value="10. Sınıf">
+          10. Sınıf
+        </option>
+
+        <option value="11. Sınıf">
+          11. Sınıf
+        </option>
+
+        <option value="12. Sınıf">
+          12. Sınıf
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="subjectFilter">
+        Ders
+      </label>
+
+      <select id="subjectFilter">
+
+        <option value="">
+          Tüm Dersler
+        </option>
+
+        <option value="Türkçe">
+          Türkçe
+        </option>
+
+        <option value="Matematik">
+          Matematik
+        </option>
+
+        <option value="Fen Bilimleri">
+          Fen Bilimleri
+        </option>
+
+        <option value="Sosyal Bilgiler">
+          Sosyal Bilgiler
+        </option>
+
+        <option value="İngilizce">
+          İngilizce
+        </option>
+
+        <option value="Türk Dili ve Edebiyatı">
+          Türk Dili ve Edebiyatı
+        </option>
+
+        <option value="Fizik">
+          Fizik
+        </option>
+
+        <option value="Kimya">
+          Kimya
+        </option>
+
+        <option value="Biyoloji">
+          Biyoloji
+        </option>
+
+        <option value="Tarih">
+          Tarih
+        </option>
+
+        <option value="Coğrafya">
+          Coğrafya
+        </option>
+
+        <option value="Din Kültürü">
+          Din Kültürü
+        </option>
+
+        <option value="Felsefe">
+          Felsefe
+        </option>
+
+        <option value="Bilişim">
+          Bilişim
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label for="sortFilter">
+        Sırala
+      </label>
+
+      <select id="sortFilter">
+
+        <option value="new">
+          En Yeni
+        </option>
+
+        <option value="popular">
+          En Çok Görüntülenen
+        </option>
+
+        <option value="az">
+          A → Z
+        </option>
+
+        <option value="za">
+          Z → A
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <!-- SONUÇ BAR -->
+
+  <div class="results-bar">
+
+    <div
+      class="results-count"
+      id="resultsCount"
+    >
+      Notlar yükleniyor...
+    </div>
+
+    <button
+      class="clear-filters"
+      id="clearFilters"
+      type="button"
+    >
+      Filtreleri Temizle
+    </button>
+
+  </div>
+
+
+  <!-- NOTLAR -->
+
+  <div
+    class="notes-grid"
+    id="notesGrid"
+  >
+
+    <div
+      class="data-error"
+      id="dataError"
+    >
 
       <h2>
-        Not bulunamadı
+        📚 Notlar yüklenemedi
       </h2>
 
       <p>
-        Arama veya filtrelerini
-        değiştirerek tekrar dene.
+        DersCep not verileri yüklenemedi.
+        GitHub'daki dosya yapısını kontrol et.
       </p>
 
-      <button
-        class="button button-primary"
-        id="emptyClear"
-        type="button"
-      >
-        Filtreleri Temizle
-      </button>
+      <code>
+        data/notes.js
+      </code>
 
     </div>
 
+  </div>
+
+
+  <!-- BOŞ SONUÇ -->
+
+  <div
+    class="empty-state"
+    id="emptyState"
+  >
+
+    <div class="empty-icon">
+      🔍
+    </div>
+
+    <h2>
+      Not bulunamadı
+    </h2>
+
+    <p>
+      Arama veya filtrelerini
+      değiştirerek tekrar dene.
+    </p>
+
+    <button
+      class="button button-primary"
+      id="emptyClear"
+      type="button"
+    >
+      Filtreleri Temizle
+    </button>
 
   </div>
+
+</div>
 
 </section>
 
 </main>
-
 
 
 <!-- ==================================================
@@ -1056,7 +764,6 @@
 <footer class="footer">
 
   <div class="container footer-grid">
-
 
     <div>
 
@@ -1160,32 +867,26 @@
 
     </div>
 
-
   </div>
 
 
   <div class="footer-bottom">
-
     © 2026 DersCep · Tüm hakları saklıdır.
-
   </div>
 
 </footer>
 
 
-
 <!-- ==================================================
-     VERİ
+     VERİ DOSYALARI
 ================================================== -->
 
-<script src="data/notes.js"></script>
-
-<script src="js/app.js"></script>
-
+<script src="./data/notes.js"></script>
+<script src="./js/app.js"></script>
 
 
 <!-- ==================================================
-     SAYFA JAVASCRIPT
+     NOTLAR JAVASCRIPT
 ================================================== -->
 
 <script>
@@ -1198,91 +899,79 @@
 ================================================== */
 
 const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
+  document.getElementById("searchInput");
 
 const gradeFilter =
-  document.getElementById(
-    "gradeFilter"
-  );
+  document.getElementById("gradeFilter");
 
 const subjectFilter =
-  document.getElementById(
-    "subjectFilter"
-  );
+  document.getElementById("subjectFilter");
 
 const sortFilter =
-  document.getElementById(
-    "sortFilter"
-  );
+  document.getElementById("sortFilter");
 
 const notesGrid =
-  document.getElementById(
-    "notesGrid"
-  );
+  document.getElementById("notesGrid");
 
 const resultsCount =
-  document.getElementById(
-    "resultsCount"
-  );
+  document.getElementById("resultsCount");
 
 const emptyState =
-  document.getElementById(
-    "emptyState"
-  );
+  document.getElementById("emptyState");
 
 const clearFilters =
-  document.getElementById(
-    "clearFilters"
-  );
+  document.getElementById("clearFilters");
 
 const emptyClear =
-  document.getElementById(
-    "emptyClear"
-  );
+  document.getElementById("emptyClear");
+
+const dataError =
+  document.getElementById("dataError");
 
 
 /* ==================================================
-   URL PARAMETRELERİ
+   VERİ KONTROLÜ
 ================================================== */
 
-const urlParams =
-  new URLSearchParams(
-    window.location.search
-  );
+function getNotes() {
 
+  if (
+    typeof window.DERSCEP_NOTLARI === "undefined"
+  ) {
 
-const urlGrade =
-  urlParams.get(
-    "grade"
-  );
+    dataError.classList.add("show");
 
+    resultsCount.innerHTML =
+      "<strong>0</strong> not";
 
-const urlSubject =
-  urlParams.get(
-    "subject"
-  );
+    return [];
 
+  }
 
-if (urlGrade) {
+  if (
+    !Array.isArray(window.DERSCEP_NOTLARI)
+  ) {
 
-  gradeFilter.value =
-    urlGrade;
+    dataError.classList.add("show");
 
-}
+    resultsCount.innerHTML =
+      "<strong>0</strong> not";
 
+    return [];
 
-if (urlSubject) {
+  }
 
-  subjectFilter.value =
-    urlSubject;
+  dataError.classList.remove("show");
+
+  return [
+    ...window.DERSCEP_NOTLARI
+  ];
 
 }
 
 
 /* ==================================================
-   ARAMA NORMALLEŞTİRME
+   TÜRKÇE ARAMA NORMALLEŞTİRME
 ================================================== */
 
 function normalizeText(text) {
@@ -1299,108 +988,135 @@ function normalizeText(text) {
 
 
 /* ==================================================
-   NOTLARI AL
+   HTML GÜVENLİĞİ
 ================================================== */
 
-function getNotes() {
+function escapeHtml(value) {
 
-  if (
-    typeof DERSCEP_NOTLARI ===
-    "undefined"
-  ) {
+  return String(value ?? "")
 
-    return [];
+    .replace(/&/g, "&amp;")
 
-  }
+    .replace(/</g, "&lt;")
 
-  return [
-    ...DERSCEP_NOTLARI
-  ];
+    .replace(/>/g, "&gt;")
+
+    .replace(/"/g, "&quot;")
+
+    .replace(/'/g, "&#039;");
 
 }
 
 
 /* ==================================================
-   FİLTRELE
+   FAVORİ KONTROL
+================================================== */
+
+function isFavorite(id) {
+
+  try {
+
+    if (
+      typeof DersCep !== "undefined" &&
+      DersCep.favorites &&
+      typeof DersCep.favorites.has === "function"
+    ) {
+
+      return DersCep.favorites.has(id);
+
+    }
+
+  } catch (error) {
+
+    console.warn(
+      "Favori kontrolü başarısız:",
+      error
+    );
+
+  }
+
+  return false;
+
+}
+
+
+/* ==================================================
+   NOTLARI FİLTRELE
 ================================================== */
 
 function filterNotes() {
-
 
   const search =
     normalizeText(
       searchInput.value
     );
 
-
   const grade =
     gradeFilter.value;
 
-
   const subject =
     subjectFilter.value;
-
 
   let notes =
     getNotes();
 
 
   notes =
-    notes.filter(
-      note => {
+    notes.filter(note => {
 
+      const searchable =
+        normalizeText(
 
-        const searchable =
+          [
 
-          normalizeText(
-            [
-              note.title,
-              note.description,
-              note.subject,
-              note.grade,
-              note.category,
-              ...(note.topics || [])
-            ].join(" ")
-          );
+            note.title,
 
+            note.description,
 
-        const searchMatch =
-          !search ||
-          searchable.includes(
-            search
-          );
+            note.subject,
 
+            note.grade,
 
-        const gradeMatch =
-          !grade ||
-          note.grade ===
-          grade;
+            note.category,
 
+            ...(Array.isArray(note.topics)
+              ? note.topics
+              : [])
 
-        const subjectMatch =
-          !subject ||
-          note.subject ===
-          subject;
+          ].join(" ")
 
-
-        return (
-          searchMatch &&
-          gradeMatch &&
-          subjectMatch
         );
 
-      }
-    );
+
+      const searchMatch =
+        !search ||
+        searchable.includes(search);
+
+
+      const gradeMatch =
+        !grade ||
+        note.grade === grade;
+
+
+      const subjectMatch =
+        !subject ||
+        note.subject === subject;
+
+
+      return (
+        searchMatch &&
+        gradeMatch &&
+        subjectMatch
+      );
+
+    });
 
 
   /* ==================================================
      SIRALAMA
   ================================================== */
 
-  switch (
-    sortFilter.value
-  ) {
-
+  switch (sortFilter.value) {
 
     case "popular":
 
@@ -1417,9 +1133,9 @@ function filterNotes() {
 
       notes.sort(
         (a, b) =>
-          String(a.title)
+          String(a.title || "")
             .localeCompare(
-              String(b.title),
+              String(b.title || ""),
               "tr"
             )
       );
@@ -1431,9 +1147,9 @@ function filterNotes() {
 
       notes.sort(
         (a, b) =>
-          String(b.title)
+          String(b.title || "")
             .localeCompare(
-              String(a.title),
+              String(a.title || ""),
               "tr"
             )
       );
@@ -1447,12 +1163,8 @@ function filterNotes() {
 
       notes.sort(
         (a, b) =>
-          new Date(
-            b.date || 0
-          ) -
-          new Date(
-            a.date || 0
-          )
+          new Date(b.date || 0) -
+          new Date(a.date || 0)
       );
 
       break;
@@ -1460,190 +1172,171 @@ function filterNotes() {
   }
 
 
-  renderNotes(
-    notes
-  );
+  renderNotes(notes);
 
 }
 
 
 /* ==================================================
-   NOTLARI GÖSTER
+   NOTLARI OLUŞTUR
 ================================================== */
 
-function renderNotes(
-  notes
-) {
+function renderNotes(notes) {
 
-
-  notesGrid.innerHTML =
-    "";
-
+  notesGrid.innerHTML = "";
 
   resultsCount.innerHTML = `
-
-    <strong>
-      ${notes.length}
-    </strong>
-    not bulundu
-
+    <strong>${notes.length}</strong>
+    ${notes.length === 1 ? "not" : "not"} bulundu
   `;
 
 
   if (!notes.length) {
 
-    emptyState.classList.add(
-      "show"
-    );
+    emptyState.classList.add("show");
 
     return;
 
   }
 
 
-  emptyState.classList.remove(
-    "show"
-  );
+  emptyState.classList.remove("show");
 
 
-  notes.forEach(
-    note => {
+  notes.forEach(note => {
+
+    const card =
+      document.createElement("article");
+
+    card.className =
+      "note-card";
 
 
-      const card =
-        document.createElement(
-          "article"
-        );
+    const favorite =
+      isFavorite(note.id);
 
 
-      card.className =
-        "note-card";
+    card.innerHTML = `
 
+      <div class="note-top">
 
-      const favorite =
-        typeof DersCep !==
-        "undefined" &&
-        DersCep.favorites &&
-        DersCep.favorites.has(
-          note.id
-        );
-
-
-      card.innerHTML = `
-
-
-        <div class="note-top">
-
-
-          <div class="note-icon">
-
-            ${note.icon || "📚"}
-
-          </div>
-
-
-          <button
-
-            class="
-              favorite-btn
-              ${favorite ? "active" : ""}
-            "
-
-            type="button"
-
-            aria-label="Favoriye ekle"
-
-            data-favorite-id="${escapeHtml(
-              note.id
-            )}"
-
-          >
-
-            ${favorite ? "♥" : "♡"}
-
-          </button>
-
-
+        <div class="note-icon">
+          ${escapeHtml(note.icon || "📚")}
         </div>
 
+        <button
+          class="favorite-btn ${favorite ? "active" : ""}"
+          type="button"
+          aria-label="Favoriye ekle"
+          data-favorite-id="${escapeHtml(note.id)}"
+        >
+          ${favorite ? "♥" : "♡"}
+        </button>
 
-        <div class="note-meta">
+      </div>
 
+
+      <div class="note-meta">
+
+        <span>
+          🎓 ${escapeHtml(note.grade || "")}
+        </span>
+
+        <span>
+          📚 ${escapeHtml(note.subject || "")}
+        </span>
+
+      </div>
+
+
+      <h2>
+        ${escapeHtml(note.title || "Başlıksız Not")}
+      </h2>
+
+
+      <p class="note-card-description">
+        ${escapeHtml(
+          note.description ||
+          "Bu ders notu hakkında henüz açıklama eklenmedi."
+        )}
+      </p>
+
+
+      <div class="note-card-footer">
+
+        <div class="note-stats">
 
           <span>
-            🎓 ${escapeHtml(
-              note.grade
-            )}
+            👁️
+            ${Number(
+              note.views || 0
+            ).toLocaleString("tr-TR")}
           </span>
-
-
-          <span>
-            📚 ${escapeHtml(
-              note.subject
-            )}
-          </span>
-
 
         </div>
 
 
-        <h2>
-          ${escapeHtml(
-            note.title
-          )}
-        </h2>
+        <span class="note-open">
+          Notu Aç →
+        </span>
+
+      </div>
+
+    `;
 
 
-        <p class="note-card-description">
+    /* ==================================================
+       KARTA TIKLAMA
+    ================================================== */
 
-          ${escapeHtml(
-            note.description
-          )}
+    card.addEventListener(
+      "click",
+      event => {
 
-        </p>
+        if (
+          event.target.closest(
+            ".favorite-btn"
+          )
+        ) {
 
+          return;
 
-        <div class="note-card-footer">
-
-
-          <div class="note-stats">
-
-            <span>
-              👁️
-              ${Number(
-                note.views || 0
-              ).toLocaleString("tr-TR")}
-            </span>
-
-          </div>
+        }
 
 
-          <span class="note-open">
+        window.location.href =
+          "not.html?id=" +
+          encodeURIComponent(
+            note.id
+          );
 
-            Notu Aç →
-
-          </span>
-
-
-        </div>
-
-
-      `;
+      }
+    );
 
 
-      /* ==================================================
-         NOTA TIKLAMA
-      ================================================== */
+    /* ==================================================
+       FAVORİ
+    ================================================== */
 
-      card.addEventListener(
+    const favoriteButton =
+      card.querySelector(
+        ".favorite-btn"
+      );
+
+
+    if (favoriteButton) {
+
+      favoriteButton.addEventListener(
         "click",
         event => {
 
+          event.stopPropagation();
+
 
           if (
-            event.target.closest(
-              ".favorite-btn"
-            )
+            typeof DersCep === "undefined" ||
+            !DersCep.favorites ||
+            typeof DersCep.favorites.toggle !== "function"
           ) {
 
             return;
@@ -1651,46 +1344,7 @@ function renderNotes(
           }
 
 
-          window.location.href =
-            "not.html?id=" +
-            encodeURIComponent(
-              note.id
-            );
-
-        }
-      );
-
-
-      /* ==================================================
-         FAVORİ
-      ================================================== */
-
-      const favoriteButton =
-        card.querySelector(
-          ".favorite-btn"
-        );
-
-
-      if (
-        favoriteButton
-      ) {
-
-        favoriteButton.addEventListener(
-          "click",
-          event => {
-
-            event.stopPropagation();
-
-
-            if (
-              typeof DersCep ===
-              "undefined"
-            ) {
-
-              return;
-
-            }
-
+          try {
 
             DersCep.favorites.toggle(
               note.id
@@ -1714,88 +1368,109 @@ function renderNotes(
                 ? "♥"
                 : "♡";
 
+          } catch (error) {
+
+            console.warn(
+              "Favori işlemi başarısız:",
+              error
+            );
+
           }
-        );
 
-      }
-
-
-      notesGrid.appendChild(
-        card
+        }
       );
 
     }
-  );
+
+
+    notesGrid.appendChild(card);
+
+  });
 
 }
 
 
 /* ==================================================
-   HTML GÜVENLİĞİ
-================================================== */
-
-function escapeHtml(
-  value
-) {
-
-  return String(
-    value ?? ""
-  )
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
-}
-
-
-/* ==================================================
-   FİLTRE TEMİZLE
+   FİLTRELERİ TEMİZLE
 ================================================== */
 
 function resetFilters() {
 
-  searchInput.value =
-    "";
+  searchInput.value = "";
 
-  gradeFilter.value =
-    "";
+  gradeFilter.value = "";
 
-  subjectFilter.value =
-    "";
+  subjectFilter.value = "";
 
-  sortFilter.value =
-    "new";
-
-
-  const cleanUrl =
-    window.location.pathname;
+  sortFilter.value = "new";
 
 
   window.history.replaceState(
     {},
     "",
-    cleanUrl
+    window.location.pathname
   );
 
 
   filterNotes();
+
+}
+
+
+/* ==================================================
+   URL PARAMETRELERİ
+================================================== */
+
+const urlParams =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const urlGrade =
+  urlParams.get("grade");
+
+
+const urlSubject =
+  urlParams.get("subject");
+
+
+if (urlGrade) {
+
+  const gradeExists =
+    [...gradeFilter.options]
+      .some(
+        option =>
+          option.value === urlGrade
+      );
+
+
+  if (gradeExists) {
+
+    gradeFilter.value =
+      urlGrade;
+
+  }
+
+}
+
+
+if (urlSubject) {
+
+  const subjectExists =
+    [...subjectFilter.options]
+      .some(
+        option =>
+          option.value === urlSubject
+      );
+
+
+  if (subjectExists) {
+
+    subjectFilter.value =
+      urlSubject;
+
+  }
 
 }
 
@@ -1846,10 +1521,8 @@ emptyClear.addEventListener(
 
 filterNotes();
 
+
 </script>
 
-
 </body>
-
 </html>
-```
