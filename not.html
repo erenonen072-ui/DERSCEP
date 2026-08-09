@@ -1,1171 +1,414 @@
-```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+<title>Ders Notu | DersCep</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<link rel="stylesheet" href="css/style.css">
 
-  <meta
-    name="theme-color"
-    content="#2563eb"
-  >
+<style>
+.note-page{
+  padding:45px 0 90px;
+}
 
-  <meta
-    name="description"
-    content="DersCep ders notu"
-  >
+.note-container{
+  max-width:900px;
+  margin:auto;
+}
 
-  <title>Ders Notu | DersCep</title>
+.note-back{
+  display:inline-flex;
+  margin-bottom:25px;
+  color:var(--primary);
+  font-weight:700;
+  text-decoration:none;
+}
 
-  <link
-    rel="stylesheet"
-    href="css/style.css"
-  >
+.note-hero{
+  padding:35px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
 
-  <style>
+.note-hero-top{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
 
-    /* =====================================================
-       NOT SAYFASI
-    ===================================================== */
+.note-big-icon{
+  width:75px;
+  height:75px;
+  display:grid;
+  place-items:center;
+  border-radius:20px;
+  background:var(--primary-light);
+  font-size:38px;
+}
 
-    .note-page {
-      padding: 45px 0 90px;
-    }
+.note-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:20px 0;
+}
 
-    .note-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+.note-meta span{
+  padding:7px 10px;
+  border-radius:8px;
+  background:var(--background);
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+}
 
-    /* =====================================================
-       GERİ
-    ===================================================== */
+.note-hero h1{
+  font-size:clamp(30px,5vw,48px);
+  margin:0 0 10px;
+  letter-spacing:-1.5px;
+}
 
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 25px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-    }
+.note-description{
+  color:var(--muted);
+  line-height:1.7;
+}
 
-    .back-link:hover {
-      color: var(--primary);
-    }
+.note-section{
+  padding:28px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+  margin-bottom:18px;
+}
 
-    /* =====================================================
-       ÜST KART
-    ===================================================== */
+.note-section h2{
+  margin-bottom:18px;
+  font-size:23px;
+}
 
-    .note-hero {
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      margin-bottom: 22px;
-    }
+.note-section p{
+  color:var(--muted);
+  line-height:1.8;
+}
 
-    .note-hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-    }
+.note-list{
+  padding-left:22px;
+}
 
-    .note-hero-icon {
-      width: 72px;
-      height: 72px;
-      display: grid;
-      place-items: center;
-      border-radius: 20px;
-      background: var(--primary-light);
-      font-size: 34px;
-      margin-bottom: 20px;
-    }
+.note-list li{
+  margin-bottom:12px;
+  line-height:1.7;
+}
 
-    .note-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
+.example-box{
+  padding:18px;
+  border-radius:14px;
+  background:var(--primary-light);
+  margin-bottom:10px;
+  font-weight:600;
+}
 
-    .note-badge {
-      padding: 7px 10px;
-      border-radius: 9px;
-      background: var(--background);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
+.note-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
 
-    .note-hero h1 {
-      font-size: clamp(32px, 5vw, 50px);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 14px;
-    }
+.note-tag{
+  padding:8px 12px;
+  border-radius:10px;
+  background:var(--background);
+  color:var(--muted);
+  font-size:13px;
+}
 
-    .note-hero-description {
-      max-width: 760px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15px;
-    }
+.not-found{
+  text-align:center;
+  padding:80px 20px;
+}
 
-    .favorite-note {
-      width: 45px;
-      height: 45px;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: var(--background);
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 21px;
-      flex-shrink: 0;
-    }
+@media(max-width:600px){
+  .note-hero,
+  .note-section{
+    padding:22px;
+  }
 
-    .favorite-note.active {
-      color: #ef4444;
-      border-color: #ef4444;
-      background: rgba(239,68,68,.08);
-    }
+  .note-hero-top{
+    align-items:flex-start;
+  }
 
-    /* =====================================================
-       İSTATİSTİK
-    ===================================================== */
-
-    .note-stats-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border);
-    }
-
-    .note-stat {
-      padding: 9px 12px;
-      border-radius: 10px;
-      background: var(--background);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 650;
-    }
-
-    /* =====================================================
-       İÇERİK
-    ===================================================== */
-
-    .content-card {
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      margin-bottom: 20px;
-    }
-
-    .content-card h2 {
-      font-size: 25px;
-      margin-bottom: 15px;
-    }
-
-    .content-card h3 {
-      font-size: 18px;
-      margin-top: 25px;
-      margin-bottom: 10px;
-    }
-
-    .content-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-
-    /* =====================================================
-       KONU LİSTESİ
-    ===================================================== */
-
-    .topic-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .topic-item {
-      padding: 13px 15px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--background);
-      font-size: 13px;
-      font-weight: 650;
-    }
-
-    /* =====================================================
-       BİLGİ KUTUSU
-    ===================================================== */
-
-    .info-box {
-      padding: 18px;
-      border-left: 4px solid var(--primary);
-      border-radius: 12px;
-      background: var(--primary-light);
-      margin-top: 20px;
-    }
-
-    .info-box strong {
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .info-box p {
-      margin: 0;
-    }
-
-    /* =====================================================
-       HATA
-    ===================================================== */
-
-    .not-found {
-      display: none;
-      text-align: center;
-      padding: 70px 20px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: var(--surface);
-    }
-
-    .not-found.show {
-      display: block;
-    }
-
-    .not-found-icon {
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
-
-    .not-found p {
-      color: var(--muted);
-      margin: 10px 0 25px;
-    }
-
-    /* =====================================================
-       MOBİL
-    ===================================================== */
-
-    @media (max-width: 650px) {
-
-      .note-page {
-        padding-top: 30px;
-      }
-
-      .note-hero,
-      .content-card {
-        padding: 22px;
-      }
-
-      .note-hero-top {
-        gap: 10px;
-      }
-
-      .note-hero h1 {
-        letter-spacing: -1px;
-      }
-
-      .topic-list {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-  </style>
+  .note-big-icon{
+    width:60px;
+    height:60px;
+    font-size:30px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="header">
+<div class="container navbar">
 
-  <div class="container navbar">
+<a href="index.html" class="logo">
+<div class="logo-icon">📚</div>
+<div>Ders<span>Cep</span></div>
+</a>
 
-    <a
-      href="index.html"
-      class="logo"
-      aria-label="DersCep Ana Sayfa"
-    >
+<nav class="nav-links">
+<a href="index.html">Ana Sayfa</a>
+<a href="siniflar.html">Sınıflar</a>
+<a href="dersler.html">Dersler</a>
+<a href="notlar.html">Tüm Notlar</a>
+</nav>
 
-      <div class="logo-icon">
-        📚
-      </div>
+<div class="nav-actions">
+<button class="icon-button" data-theme-toggle type="button">🌙</button>
+<button class="icon-button mobile-menu" data-mobile-menu type="button">☰</button>
+</div>
 
-      <div>
-        Ders<span>Cep</span>
-      </div>
-
-    </a>
-
-    <nav
-      class="nav-links"
-      aria-label="Ana menü"
-    >
-
-      <a href="index.html">
-        Ana Sayfa
-      </a>
-
-      <a href="siniflar.html">
-        Sınıflar
-      </a>
-
-      <a href="dersler.html">
-        Dersler
-      </a>
-
-      <a href="notlar.html">
-        Tüm Notlar
-      </a>
-
-    </nav>
-
-    <div class="nav-actions">
-
-      <button
-        class="icon-button"
-        data-theme-toggle
-        type="button"
-        aria-label="Tema değiştir"
-      >
-        🌙
-      </button>
-
-      <button
-        class="icon-button mobile-menu"
-        data-mobile-menu
-        type="button"
-        aria-label="Menüyü aç"
-        aria-expanded="false"
-      >
-        ☰
-      </button>
-
-    </div>
-
-  </div>
-
-  <nav
-    class="mobile-nav"
-    data-mobile-nav
-  >
-
-    <a href="index.html">
-      Ana Sayfa
-    </a>
-
-    <a href="siniflar.html">
-      Sınıflar
-    </a>
-
-    <a href="dersler.html">
-      Dersler
-    </a>
-
-    <a href="notlar.html">
-      Tüm Notlar
-    </a>
-
-  </nav>
-
+</div>
 </header>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<main class="note-page">
 
-<main>
+<div class="container note-container">
 
-<section class="note-page">
+<a href="notlar.html" class="note-back">
+← Tüm Notlara Dön
+</a>
 
-  <div class="container note-container">
+<div id="noteContent"></div>
 
-    <a
-      href="notlar.html"
-      class="back-link"
-    >
-      ← Tüm Notlara Dön
-    </a>
-
-
-    <!-- =================================================
-         NOT BULUNAMADI
-    ================================================== -->
-
-    <div
-      class="not-found"
-      id="notFound"
-    >
-
-      <div class="not-found-icon">
-        🔍
-      </div>
-
-      <h1>
-        Not bulunamadı
-      </h1>
-
-      <p>
-        Aradığın ders notu mevcut değil
-        veya kaldırılmış olabilir.
-      </p>
-
-      <a
-        href="notlar.html"
-        class="button button-primary"
-      >
-        Tüm Notları Gör
-      </a>
-
-    </div>
-
-
-    <!-- =================================================
-         NOT İÇERİĞİ
-    ================================================== -->
-
-    <div id="noteContent">
-
-
-      <!-- =================================================
-           HERO
-      ================================================== -->
-
-      <article class="note-hero">
-
-        <div class="note-hero-top">
-
-          <div>
-
-            <div
-              class="note-hero-icon"
-              id="noteIcon"
-            >
-              📚
-            </div>
-
-            <div
-              class="note-badges"
-              id="noteBadges"
-            >
-            </div>
-
-            <h1 id="noteTitle">
-              Ders Notu
-            </h1>
-
-            <p
-              class="note-hero-description"
-              id="noteDescription"
-            >
-            </p>
-
-          </div>
-
-          <button
-            class="favorite-note"
-            id="favoriteButton"
-            type="button"
-            aria-label="Favoriye ekle"
-          >
-            ♡
-          </button>
-
-        </div>
-
-
-        <div class="note-stats-bar">
-
-          <div
-            class="note-stat"
-            id="noteViews"
-          >
-            👁️ 0 görüntülenme
-          </div>
-
-          <div
-            class="note-stat"
-            id="noteCategory"
-          >
-            📚 Ders Notu
-          </div>
-
-          <div
-            class="note-stat"
-            id="noteDate"
-          >
-            📅 -
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- =================================================
-           KONU ÖZETİ
-      ================================================== -->
-
-      <article class="content-card">
-
-        <h2>
-          📖 Konu Özeti
-        </h2>
-
-        <p id="summaryText">
-        </p>
-
-      </article>
-
-
-      <!-- =================================================
-           KONULAR
-      ================================================== -->
-
-      <article class="content-card">
-
-        <h2>
-          📚 Bu Notta Neler Var?
-        </h2>
-
-        <div
-          class="topic-list"
-          id="topicList"
-        >
-        </div>
-
-      </article>
-
-
-      <!-- =================================================
-           ÖNEMLİ BİLGİ
-      ================================================== -->
-
-      <article class="content-card">
-
-        <h2>
-          💡 Önemli Bilgiler
-        </h2>
-
-        <div class="info-box">
-
-          <strong>
-            Sınav İpucu
-          </strong>
-
-          <p>
-            Bu konuyu çalışırken temel kavramları
-            öğrenmeye, kuralları anlamaya ve
-            örnek sorular üzerinde uygulamaya
-            dikkat et.
-          </p>
-
-        </div>
-
-        <h3>
-          Nasıl Çalışmalısın?
-        </h3>
-
-        <p>
-          Önce konu özetini oku. Daha sonra
-          konu başlıklarını tekrar et ve
-          öğrendiklerini kendi cümlelerinle
-          anlatmaya çalış.
-        </p>
-
-        <p>
-          Matematik ve fen gibi derslerde
-          yalnızca okumak yerine örnek sorular
-          çözmek öğrenmenin kalıcılığını artırır.
-        </p>
-
-      </article>
-
-
-      <!-- =================================================
-           ALT NAVİGASYON
-      ================================================== -->
-
-      <article class="content-card">
-
-        <h2>
-          🎓 Daha Fazla Ders Notu
-        </h2>
-
-        <p>
-          DersCep'teki diğer ders notlarını
-          keşfet ve çalışmalarına devam et.
-        </p>
-
-        <a
-          href="notlar.html"
-          class="button button-primary"
-        >
-          Tüm Notları Keşfet →
-        </a>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
+</div>
 
 </main>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer class="footer">
 
-  <div class="container footer-grid">
+<div class="container footer-grid">
 
-    <div>
+<div>
+<div class="logo">
+<div class="logo-icon">📚</div>
+<div>Ders<span>Cep</span></div>
+</div>
 
-      <div class="logo">
+<p style="margin-top:14px;">
+Öğrenciler için ücretsiz ders notları ve çalışma kaynakları.
+</p>
+</div>
 
-        <div class="logo-icon">
-          📚
-        </div>
+<div>
+<strong>DersCep</strong>
+<ul>
+<li><a href="index.html">Ana Sayfa</a></li>
+<li><a href="notlar.html">Tüm Notlar</a></li>
+</ul>
+</div>
 
-        <div>
-          Ders<span>Cep</span>
-        </div>
+<div>
+<strong>Keşfet</strong>
+<ul>
+<li><a href="siniflar.html">Sınıflar</a></li>
+<li><a href="dersler.html">Dersler</a></li>
+</ul>
+</div>
 
-      </div>
+</div>
 
-      <p style="margin-top:14px;">
-        Öğrenciler için ücretsiz ders
-        notları ve çalışma kaynakları.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <strong>
-        DersCep
-      </strong>
-
-      <ul>
-
-        <li>
-          <a href="index.html">
-            Ana Sayfa
-          </a>
-        </li>
-
-        <li>
-          <a href="notlar.html">
-            Tüm Notlar
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <div>
-
-      <strong>
-        Keşfet
-      </strong>
-
-      <ul>
-
-        <li>
-          <a href="siniflar.html">
-            Sınıflar
-          </a>
-        </li>
-
-        <li>
-          <a href="dersler.html">
-            Dersler
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <div>
-
-      <strong>
-        Bilgi
-      </strong>
-
-      <ul>
-
-        <li>
-          <a href="hakkimizda.html">
-            Hakkımızda
-          </a>
-        </li>
-
-        <li>
-          <a href="iletisim.html">
-            İletişim
-          </a>
-        </li>
-
-        <li>
-          <a href="gizlilik.html">
-            Gizlilik
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-
-  <div class="footer-bottom">
-    © 2026 DersCep · Tüm hakları saklıdır.
-  </div>
+<div class="footer-bottom">
+© 2026 DersCep · Tüm hakları saklıdır.
+</div>
 
 </footer>
 
 
-<!-- =====================================================
-     JS
-===================================================== -->
-
 <script src="data/notes.js"></script>
 <script src="js/app.js"></script>
-
 
 <script>
 
 "use strict";
 
+const params = new URLSearchParams(window.location.search);
 
-/* =====================================================
-   URL
-===================================================== */
+const id = params.get("id");
 
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
+const container = document.getElementById("noteContent");
 
-const noteId =
-  params.get("id");
+function escapeHtml(value){
 
-
-/* =====================================================
-   ELEMENTLER
-===================================================== */
-
-const noteContent =
-  document.getElementById(
-    "noteContent"
-  );
-
-const notFound =
-  document.getElementById(
-    "notFound"
-  );
-
-const noteIcon =
-  document.getElementById(
-    "noteIcon"
-  );
-
-const noteTitle =
-  document.getElementById(
-    "noteTitle"
-  );
-
-const noteDescription =
-  document.getElementById(
-    "noteDescription"
-  );
-
-const noteBadges =
-  document.getElementById(
-    "noteBadges"
-  );
-
-const noteViews =
-  document.getElementById(
-    "noteViews"
-  );
-
-const noteCategory =
-  document.getElementById(
-    "noteCategory"
-  );
-
-const noteDate =
-  document.getElementById(
-    "noteDate"
-  );
-
-const summaryText =
-  document.getElementById(
-    "summaryText"
-  );
-
-const topicList =
-  document.getElementById(
-    "topicList"
-  );
-
-const favoriteButton =
-  document.getElementById(
-    "favoriteButton"
-  );
-
-
-/* =====================================================
-   HTML GÜVENLİĞİ
-===================================================== */
-
-function escapeHtml(value) {
-
-  return String(
-    value ?? ""
-  )
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
-
-
-/* =====================================================
-   TARİH
-===================================================== */
-
-function formatDate(date) {
-
-  if (!date) {
-    return "-";
-  }
-
-  const d =
-    new Date(date);
-
-  if (
-    Number.isNaN(
-      d.getTime()
-    )
-  ) {
-    return date;
-  }
-
-  return d.toLocaleDateString(
-    "tr-TR",
-    {
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-    }
-  );
-
-}
-
-
-/* =====================================================
-   NOTU BUL
-===================================================== */
-
-function getCurrentNote() {
-
-  if (
-    typeof DERSCEP_NOTLARI ===
-    "undefined"
-  ) {
-
-    return null;
-
-  }
-
-  return DERSCEP_NOTLARI.find(
-    note =>
-      note.id === noteId
-  );
-
-}
-
 
 const note =
-  getCurrentNote();
+typeof dersCepNotGetir === "function"
+? dersCepNotGetir(id)
+: null;
 
 
-/* =====================================================
-   NOT YOKSA
-===================================================== */
+if(!note){
 
-if (!note) {
+container.innerHTML = `
 
-  noteContent.style.display =
-    "none";
+<div class="note-section not-found">
 
-  notFound.classList.add(
-    "show"
-  );
+<div style="font-size:60px;">🔍</div>
 
-  document.title =
-    "Not Bulunamadı | DersCep";
+<h1>Not bulunamadı</h1>
 
+<p>
+Aradığın ders notu bulunamadı veya bağlantı hatalı.
+</p>
+
+<a href="notlar.html" class="button button-primary">
+Tüm Notlara Dön
+</a>
+
+</div>
+
+`;
+
+}else{
+
+document.title =
+note.title + " | " + note.grade + " | DersCep";
+
+const content = note.content || {};
+
+container.innerHTML = `
+
+<article>
+
+<section class="note-hero">
+
+<div class="note-hero-top">
+
+<div class="note-big-icon">
+${escapeHtml(note.icon || "📚")}
+</div>
+
+<div>
+
+<h1>
+${escapeHtml(note.title)}
+</h1>
+
+<p class="note-description">
+${escapeHtml(note.description)}
+</p>
+
+</div>
+
+</div>
+
+
+<div class="note-meta">
+
+<span>🎓 ${escapeHtml(note.grade)}</span>
+
+<span>📚 ${escapeHtml(note.subject)}</span>
+
+<span>👁️ ${Number(note.views || 0).toLocaleString("tr-TR")}</span>
+
+</div>
+
+</section>
+
+
+<section class="note-section">
+
+<h2>📌 Konu Özeti</h2>
+
+<p>
+${escapeHtml(content.summary || note.description)}
+</p>
+
+</section>
+
+
+<section class="note-section">
+
+<h2>🧠 Bilmen Gerekenler</h2>
+
+<ul class="note-list">
+
+${
+(content.important || [])
+.map(item => `<li>${escapeHtml(item)}</li>`)
+.join("")
 }
 
+</ul>
 
-/* =====================================================
-   NOTU GÖSTER
-===================================================== */
+</section>
 
-if (note) {
 
-  document.title =
-    `${note.title} | DersCep`;
+<section class="note-section">
 
+<h2>✏️ Örnekler</h2>
 
-  /* ICON */
+${
+(content.examples || [])
+.map(item => `<div class="example-box">${escapeHtml(item)}</div>`)
+.join("")
+}
 
-  noteIcon.textContent =
-    note.icon || "📚";
+</section>
 
 
-  /* BAŞLIK */
+<section class="note-section">
 
-  noteTitle.textContent =
-    note.title;
+<h2>🏷️ Konular</h2>
 
+<div class="note-tags">
 
-  /* AÇIKLAMA */
+${
+(note.topics || [])
+.map(item => `<span class="note-tag">${escapeHtml(item)}</span>`)
+.join("")
+}
 
-  noteDescription.textContent =
-    note.description ||
-    "Bu konu hakkında DersCep ders notu.";
+</div>
 
+</section>
 
-  /* =================================================
-     BADGE
-  ================================================== */
 
-  noteBadges.innerHTML = `
+<section class="note-section">
 
-    <span class="note-badge">
-      🎓 ${escapeHtml(note.grade)}
-    </span>
+<h2>⚠️ Çalışma İpuçları</h2>
 
-    <span class="note-badge">
-      📚 ${escapeHtml(note.subject)}
-    </span>
+<ul class="note-list">
 
-  `;
+${
+(content.tips || [])
+.map(item => `<li>${escapeHtml(item)}</li>`)
+.join("")
+}
 
+</ul>
 
-  /* =================================================
-     İSTATİSTİK
-  ================================================== */
+</section>
 
-  noteViews.innerHTML = `
-    👁️ ${Number(
-      note.views || 0
-    ).toLocaleString(
-      "tr-TR"
-    )} görüntülenme
-  `;
+</article>
 
-
-  noteCategory.innerHTML = `
-    📚 ${escapeHtml(
-      note.category ||
-      "Ders Notu"
-    )}
-  `;
-
-
-  noteDate.innerHTML = `
-    📅 ${escapeHtml(
-      formatDate(
-        note.date
-      )
-    )}
-  `;
-
-
-  /* =================================================
-     ÖZET
-  ================================================== */
-
-  summaryText.textContent =
-    note.description ||
-    `${note.title} konusu hakkında temel bilgiler, önemli kavramlar ve çalışma noktaları.`;
-
-
-  /* =================================================
-     KONULAR
-  ================================================== */
-
-  topicList.innerHTML =
-    "";
-
-  const topics =
-    Array.isArray(
-      note.topics
-    )
-      ? note.topics
-      : [];
-
-
-  if (!topics.length) {
-
-    topicList.innerHTML = `
-
-      <div class="topic-item">
-        Bu nota ait konu başlığı bulunmuyor.
-      </div>
-
-    `;
-
-  } else {
-
-    topics.forEach(
-      topic => {
-
-        const item =
-          document.createElement(
-            "div"
-          );
-
-        item.className =
-          "topic-item";
-
-        item.textContent =
-          "✓ " + topic;
-
-        topicList.appendChild(
-          item
-        );
-
-      }
-    );
-
-  }
-
-
-  /* =================================================
-     FAVORİ
-  ================================================== */
-
-  function updateFavorite() {
-
-    if (
-      typeof DersCep ===
-        "undefined" ||
-      !DersCep.favorites
-    ) {
-
-      return;
-
-    }
-
-    const active =
-      DersCep.favorites.has(
-        note.id
-      );
-
-    favoriteButton.classList.toggle(
-      "active",
-      active
-    );
-
-    favoriteButton.textContent =
-      active
-        ? "♥"
-        : "♡";
-
-    favoriteButton.setAttribute(
-      "aria-label",
-      active
-        ? "Favorilerden çıkar"
-        : "Favoriye ekle"
-    );
-
-  }
-
-
-  updateFavorite();
-
-
-  favoriteButton.addEventListener(
-    "click",
-    () => {
-
-      if (
-        typeof DersCep ===
-          "undefined" ||
-        !DersCep.favorites
-      ) {
-
-        return;
-
-      }
-
-      DersCep.favorites.toggle(
-        note.id
-      );
-
-      updateFavorite();
-
-    }
-  );
+`;
 
 }
 
@@ -1173,4 +416,3 @@ if (note) {
 
 </body>
 </html>
-```
