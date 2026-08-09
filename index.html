@@ -1,1714 +1,800 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#2563eb">
-  <meta name="description" content="DersCep - Ders notları, konu özetleri ve yazılı hazırlıkları.">
-  <meta name="keywords" content="ders notları, yazılı notları, 9. sınıf, 10. sınıf, 11. sınıf, 12. sınıf, öğrenci">
-  <meta name="author" content="DersCep">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>DersCep | Ders Notları ve Öğrenci Platformu</title>
+  <meta
+    name="theme-color"
+    content="#2563eb"
+  >
 
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #eff6ff;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --success: #16a34a;
-      --danger: #ef4444;
-      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
-      --radius: 18px;
-    }
+  <meta
+    name="description"
+    content="DersCep - Öğrenciler için ücretsiz ders notları, konu özetleri ve çalışma kaynakları."
+  >
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <meta
+    name="keywords"
+    content="ders notları, öğrenci, 9. sınıf, matematik, fizik, kimya, biyoloji, tarih, coğrafya"
+  >
 
-    html {
-      scroll-behavior: smooth;
-    }
+  <meta
+    name="author"
+    content="DersCep"
+  >
 
-    body {
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  <title>DersCep | Ücretsiz Ders Notları</title>
 
-    button,
-    input,
-    select {
-      font: inherit;
-    }
 
-    button {
-      cursor: pointer;
-    }
+  <!-- CSS -->
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
 
-    /* =========================
-       HEADER
-    ========================== */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: auto;
-      height: 74px;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      font-size: 23px;
-      letter-spacing: -1px;
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: linear-gradient(135deg, #2563eb, #60a5fa);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 21px;
-      box-shadow: 0 8px 20px rgba(37,99,235,.25);
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-links a {
-      padding: 9px 13px;
-      border-radius: 10px;
-      color: #475569;
-      font-weight: 600;
-      font-size: 14px;
-      transition: .2s;
-    }
-
-    .nav-links a:hover {
-      background: var(--secondary);
-      color: var(--primary);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .icon-btn {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      transition: .2s;
-    }
-
-    .icon-btn:hover {
-      transform: translateY(-2px);
-      border-color: #bfdbfe;
-      background: var(--secondary);
-    }
-
-    .mobile-menu {
-      display: none;
-    }
-
-    /* =========================
-       HERO
-    ========================== */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(96,165,250,.22), transparent 30%),
-        radial-gradient(circle at 90% 80%, rgba(37,99,235,.16), transparent 30%),
-        linear-gradient(135deg, #eff6ff, #ffffff);
-      padding: 85px 20px 70px;
-    }
-
-    .hero-inner {
-      max-width: 1150px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: white;
-      border: 1px solid #dbeafe;
-      color: var(--primary);
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 18px;
-      box-shadow: 0 6px 20px rgba(37,99,235,.08);
-    }
-
-    .hero h1 {
-      font-size: clamp(40px, 6vw, 68px);
-      line-height: 1.03;
-      letter-spacing: -3px;
-      max-width: 700px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 650px;
-      margin-bottom: 30px;
-    }
-
-    .hero-search {
-      max-width: 650px;
-      display: flex;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 6px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-search input {
-      flex: 1;
-      min-width: 0;
-      border: 0;
-      outline: 0;
-      padding: 13px 15px;
-      color: var(--text);
-      background: transparent;
-    }
-
-    .search-btn {
-      border: 0;
-      background: var(--primary);
-      color: white;
-      padding: 0 22px;
-      border-radius: 11px;
-      font-weight: 700;
-      transition: .2s;
-    }
-
-    .search-btn:hover {
-      background: var(--primary-dark);
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,.8);
-      border: 1px solid white;
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: 0 25px 70px rgba(15,23,42,.12);
-      transform: rotate(1deg);
-    }
-
-    .hero-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .hero-card-title {
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    .online {
-      color: var(--success);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .fake-note {
-      border: 1px solid var(--border);
-      padding: 17px;
-      border-radius: 15px;
-      margin-bottom: 12px;
-      background: white;
-    }
-
-    .fake-note strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .fake-note small {
-      color: var(--muted);
-    }
-
-    /* =========================
-       GENERAL
-    ========================== */
-
-    .container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 0 20px;
-    }
-
-    section {
-      padding: 75px 0;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin-bottom: 28px;
-    }
-
-    .section-head h2 {
-      font-size: 31px;
-      letter-spacing: -1px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      margin-top: 5px;
-    }
-
-    .view-all {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    /* =========================
-       STATS
-    ========================== */
-
-    .stats {
-      margin-top: -25px;
-      position: relative;
-      z-index: 5;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .stat {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      padding: 23px;
-      box-shadow: var(--shadow);
-    }
-
-    .stat-number {
-      font-size: 27px;
-      font-weight: 900;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 3px;
-    }
-
-    /* =========================
-       CLASS CARDS
-    ========================== */
-
-    .class-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .class-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: .25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .class-card::after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      right: -40px;
-      top: -40px;
-      background: #eff6ff;
-      border-radius: 50%;
-    }
-
-    .class-card:hover {
-      transform: translateY(-5px);
-      border-color: #bfdbfe;
-      box-shadow: var(--shadow);
-    }
-
-    .class-icon {
-      width: 46px;
-      height: 46px;
-      background: var(--secondary);
-      color: var(--primary);
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 17px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .class-card h3 {
-      font-size: 19px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .class-card p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 4px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* =========================
-       NOTES
-    ========================== */
-
-    .note-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .note-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      overflow: hidden;
-      transition: .25s;
-    }
-
-    .note-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-
-    .note-cover {
-      height: 120px;
-      background: linear-gradient(135deg, #dbeafe, #eff6ff);
-      display: flex;
-      align-items: end;
-      padding: 17px;
-      font-weight: 900;
-      font-size: 24px;
-      color: #1e40af;
-    }
-
-    .note-content {
-      padding: 18px;
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--primary);
-      background: var(--secondary);
-      padding: 5px 9px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
-
-    .note-content h3 {
-      font-size: 17px;
-      margin-bottom: 5px;
-    }
-
-    .note-content p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .note-footer {
-      margin-top: 17px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .favorite {
-      border: 0;
-      background: transparent;
-      font-size: 18px;
-    }
-
-    /* =========================
-       FEATURES
-    ========================== */
-
-    .feature-section {
-      background: #0f172a;
-      color: white;
-    }
-
-    .feature-section .section-head p {
-      color: #94a3b8;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .feature {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
-      padding: 26px;
-      border-radius: 18px;
-    }
-
-    .feature-icon {
-      font-size: 27px;
-      margin-bottom: 14px;
-    }
-
-    .feature h3 {
-      margin-bottom: 7px;
-    }
-
-    .feature p {
-      color: #94a3b8;
-      font-size: 14px;
-    }
-
-    /* =========================
-       CTA
-    ========================== */
-
-    .cta {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: white;
-      border-radius: 28px;
-      padding: 55px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta h2 {
-      font-size: 36px;
-      letter-spacing: -1px;
-      margin-bottom: 10px;
-    }
-
-    .cta p {
-      color: #dbeafe;
-      max-width: 600px;
-      margin: 0 auto 25px;
-    }
-
-    .cta-btn {
-      border: 0;
-      background: white;
-      color: var(--primary);
-      padding: 13px 22px;
-      border-radius: 12px;
-      font-weight: 800;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    footer {
-      background: white;
-      border-top: 1px solid var(--border);
-      margin-top: 75px;
-    }
-
-    .footer-inner {
-      max-width: 1150px;
-      margin: auto;
-      padding: 45px 20px;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 40px;
-    }
-
-    .footer-brand p {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 320px;
-      margin-top: 12px;
-    }
-
-    footer h4 {
-      margin-bottom: 13px;
-    }
-
-    footer ul {
-      list-style: none;
-    }
-
-    footer li {
-      margin: 8px 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    footer li a:hover {
-      color: var(--primary);
-    }
-
-    .copyright {
-      border-top: 1px solid var(--border);
-      padding: 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* =========================
-       MODAL
-    ========================== */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(15,23,42,.55);
-      backdrop-filter: blur(5px);
-      display: none;
-      place-items: center;
-      z-index: 2000;
-      padding: 20px;
-    }
-
-    .modal.active {
-      display: grid;
-    }
-
-    .modal-box {
-      width: min(500px, 100%);
-      background: white;
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 30px 100px rgba(0,0,0,.2);
-    }
-
-    .modal-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .close {
-      border: 0;
-      background: #f1f5f9;
-      width: 35px;
-      height: 35px;
-      border-radius: 10px;
-    }
-
-    .search-results {
-      margin-top: 15px;
-    }
-
-    .result {
-      border: 1px solid var(--border);
-      padding: 14px;
-      border-radius: 12px;
-      margin-bottom: 8px;
-      cursor: pointer;
-    }
-
-    .result:hover {
-      border-color: #93c5fd;
-      background: var(--secondary);
-    }
-
-    /* =========================
-       DARK MODE
-    ========================== */
-
-    body.dark {
-      --bg: #020617;
-      --card: #0f172a;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --border: #1e293b;
-      --secondary: #172554;
-    }
-
-    body.dark header,
-    body.dark footer,
-    body.dark .stat,
-    body.dark .class-card,
-    body.dark .note-card,
-    body.dark .hero-search,
-    body.dark .hero-card,
-    body.dark .fake-note,
-    body.dark .modal-box,
-    body.dark .icon-btn {
-      background: #0f172a;
-    }
-
-    body.dark .hero {
-      background:
-        radial-gradient(circle at 10% 10%, rgba(37,99,235,.18), transparent 30%),
-        linear-gradient(135deg, #020617, #0f172a);
-    }
-
-    body.dark .hero p,
-    body.dark .section-head p {
-      color: #94a3b8;
-    }
-
-    body.dark .hero-badge {
-      background: #0f172a;
-      border-color: #1e3a8a;
-    }
-
-    body.dark .note-cover {
-      background: #172554;
-      color: #bfdbfe;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-
-    @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-      }
-
-      .mobile-menu {
-        display: grid;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        display: none;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .class-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .note-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .navbar {
-        height: 65px;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .logo-icon {
-        width: 38px;
-        height: 38px;
-      }
-
-      .hero {
-        padding: 55px 15px 60px;
-      }
-
-      .hero h1 {
-        font-size: 43px;
-        letter-spacing: -2px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .hero-search {
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .hero-search input {
-        padding: 13px;
-      }
-
-      .search-btn {
-        padding: 12px;
-      }
-
-      section {
-        padding: 55px 0;
-      }
-
-      .container {
-        padding: 0 15px;
-      }
-
-      .stats-grid,
-      .class-grid,
-      .note-grid,
-      .feature-grid,
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .cta {
-        padding: 40px 20px;
-      }
-
-      .cta h2 {
-        font-size: 29px;
-      }
-    }
-  </style>
 </head>
+
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
 
-  <header>
-    <nav class="navbar">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-      <a href="#" class="logo">
-        <div class="logo-icon">📚</div>
+<header class="header">
+
+  <div class="container navbar">
+
+
+    <!-- LOGO -->
+
+    <a
+      href="index.html"
+      class="logo"
+      aria-label="DersCep Ana Sayfa"
+    >
+
+      <div class="logo-icon">
+        📚
+      </div>
+
+      <div>
         Ders<span>Cep</span>
+      </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav
+      class="nav-links"
+      aria-label="Ana menü"
+    >
+
+      <a
+        href="index.html"
+        class="active"
+      >
+        Ana Sayfa
       </a>
 
-      <div class="nav-links">
-        <a href="#anasayfa">Ana Sayfa</a>
-        <a href="#siniflar">Sınıflar</a>
-        <a href="#notlar">Notlar</a>
-        <a href="#hakkinda">Hakkımızda</a>
-      </div>
+      <a href="siniflar.html">
+        Sınıflar
+      </a>
 
-      <div class="nav-actions">
+      <a href="dersler.html">
+        Dersler
+      </a>
 
-        <button class="icon-btn" id="darkModeBtn" aria-label="Karanlık mod">
-          🌙
-        </button>
-
-        <button class="icon-btn mobile-menu" id="mobileSearchBtn" aria-label="Ara">
-          🔍
-        </button>
-
-      </div>
+      <a href="notlar.html">
+        Tüm Notlar
+      </a>
 
     </nav>
-  </header>
 
 
-  <!-- =========================
-       HERO
-  ========================== -->
+    <!-- ACTIONS -->
 
-  <main id="anasayfa">
+    <div class="nav-actions">
 
-    <section class="hero">
-
-      <div class="hero-inner">
-
-        <div>
-
-          <div class="hero-badge">
-            ✨ Öğrenciler için yeni nesil platform
-          </div>
-
-          <h1>
-            Ders çalışmanın
-            <span>daha kolay</span>
-            yolu.
-          </h1>
-
-          <p>
-            DersCep ile ders notlarını, konu özetlerini ve
-            yazılı hazırlıklarını tek yerde keşfet.
-          </p>
-
-          <form class="hero-search" id="searchForm">
-
-            <input
-              id="searchInput"
-              type="search"
-              placeholder="Ders, konu veya not ara..."
-              autocomplete="off"
-            >
-
-            <button class="search-btn" type="submit">
-              🔍 Ara
-            </button>
-
-          </form>
-
-        </div>
-
-
-        <div class="hero-card">
-
-          <div class="hero-card-top">
-            <div class="hero-card-title">
-              📖 Popüler Notlar
-            </div>
-
-            <div class="online">
-              ● Güncel
-            </div>
-          </div>
-
-          <div class="fake-note">
-            <strong>Matematik</strong>
-            <small>9. Sınıf • Üslü İfadeler</small>
-          </div>
-
-          <div class="fake-note">
-            <strong>Türk Dili ve Edebiyatı</strong>
-            <small>9. Sınıf • Şiir Bilgisi</small>
-          </div>
-
-          <div class="fake-note">
-            <strong>Fizik</strong>
-            <small>9. Sınıf • Hareket ve Kuvvet</small>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         STATS
-    ========================== -->
-
-    <section class="stats">
-
-      <div class="container">
-
-        <div class="stats-grid">
-
-          <div class="stat">
-            <div class="stat-number">5-12</div>
-            <div class="stat-label">Sınıf seviyeleri</div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-number">100+</div>
-            <div class="stat-label">Ders konusu</div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-number">7/24</div>
-            <div class="stat-label">Erişim</div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-number">%100</div>
-            <div class="stat-label">Öğrenci odaklı</div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         SINIFLAR
-    ========================== -->
-
-    <section id="siniflar">
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div>
-            <h2>Sınıfını seç</h2>
-            <p>İhtiyacın olan derslere hızlıca ulaş.</p>
-          </div>
-
-          <a href="#siniflar" class="view-all">
-            Tüm sınıflar →
-          </a>
-
-        </div>
-
-
-        <div class="class-grid">
-
-          <a href="#" class="class-card" data-class="9">
-            <div class="class-icon">9</div>
-            <h3>9. Sınıf</h3>
-            <p>Temel dersler ve konu notları</p>
-          </a>
-
-          <a href="#" class="class-card" data-class="10">
-            <div class="class-icon">10</div>
-            <h3>10. Sınıf</h3>
-            <p>Ders notları ve yazılı hazırlıkları</p>
-          </a>
-
-          <a href="#" class="class-card" data-class="11">
-            <div class="class-icon">11</div>
-            <h3>11. Sınıf</h3>
-            <p>Detaylı konu özetleri</p>
-          </a>
-
-          <a href="#" class="class-card" data-class="12">
-            <div class="class-icon">12</div>
-            <h3>12. Sınıf</h3>
-            <p>TYT ve AYT destekli içerikler</p>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         NOTLAR
-    ========================== -->
-
-    <section id="notlar">
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div>
-            <h2>Öne çıkan notlar</h2>
-            <p>Öğrencilerin en çok görüntülediği içerikler.</p>
-          </div>
-
-          <a href="#notlar" class="view-all">
-            Tüm notlar →
-          </a>
-
-        </div>
-
-
-        <div class="note-grid" id="noteGrid">
-
-          <article
-            class="note-card"
-            data-title="9. sınıf matematik üslü ifadeler"
-            data-subject="Matematik"
-          >
-
-            <div class="note-cover">
-              MATEMATİK
-            </div>
-
-            <div class="note-content">
-
-              <span class="tag">9. Sınıf</span>
-
-              <h3>Üslü İfadeler</h3>
-
-              <p>
-                Konunun temel kuralları ve önemli örnekler.
-              </p>
-
-              <div class="note-footer">
-                <span>📄 Ders Notu</span>
-
-                <button
-                  class="favorite"
-                  data-favorite="false"
-                  aria-label="Favorilere ekle"
-                >
-                  ♡
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article
-            class="note-card"
-            data-title="9. sınıf fizik hareket kuvvet"
-            data-subject="Fizik"
-          >
-
-            <div class="note-cover">
-              FİZİK
-            </div>
-
-            <div class="note-content">
-
-              <span class="tag">9. Sınıf</span>
-
-              <h3>Hareket ve Kuvvet</h3>
-
-              <p>
-                Temel kavramlar, formüller ve konu özeti.
-              </p>
-
-              <div class="note-footer">
-                <span>📄 Ders Notu</span>
-
-                <button
-                  class="favorite"
-                  data-favorite="false"
-                  aria-label="Favorilere ekle"
-                >
-                  ♡
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article
-            class="note-card"
-            data-title="9. sınıf türk dili edebiyatı şiir bilgisi"
-            data-subject="Türk Dili ve Edebiyatı"
-          >
-
-            <div class="note-cover">
-              EDEBİYAT
-            </div>
-
-            <div class="note-content">
-
-              <span class="tag">9. Sınıf</span>
-
-              <h3>Şiir Bilgisi</h3>
-
-              <p>
-                Şiirin temel özellikleri ve önemli terimler.
-              </p>
-
-              <div class="note-footer">
-                <span>📄 Konu Özeti</span>
-
-                <button
-                  class="favorite"
-                  data-favorite="false"
-                  aria-label="Favorilere ekle"
-                >
-                  ♡
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         FEATURES
-    ========================== -->
-
-    <section class="feature-section">
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div>
-            <h2>Neden DersCep?</h2>
-            <p>Öğrencilerin ihtiyaçlarına göre tasarlanıyor.</p>
-          </div>
-
-        </div>
-
-
-        <div class="feature-grid">
-
-          <div class="feature">
-            <div class="feature-icon">🔎</div>
-            <h3>Kolay Arama</h3>
-            <p>
-              Aradığın ders veya konuyu saniyeler içinde bul.
-            </p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">📚</div>
-            <h3>Düzenli İçerik</h3>
-            <p>
-              Sınıf ve derslere göre düzenlenmiş not sistemi.
-            </p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">📱</div>
-            <h3>Her Cihazda</h3>
-            <p>
-              Telefon, tablet ve bilgisayardan rahatça kullan.
-            </p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">⭐</div>
-            <h3>Favoriler</h3>
-            <p>
-              Daha sonra bakmak istediğin notları kaydet.
-            </p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Hızlı</h3>
-            <p>
-              Gereksiz yüklerden arındırılmış hızlı altyapı.
-            </p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">🚀</div>
-            <h3>Sürekli Gelişiyor</h3>
-            <p>
-              Yeni özellikler ve içerikler düzenli olarak eklenecek.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================== -->
-
-    <section>
-
-      <div class="container">
-
-        <div class="cta">
-
-          <h2>Ders çalışmaya hazır mısın?</h2>
-
-          <p>
-            DersCep'i keşfet ve ihtiyacın olan notlara
-            tek yerden ulaş.
-          </p>
-
-          <button class="cta-btn" id="startBtn">
-            Notları Keşfet →
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer id="hakkinda">
-
-    <div class="footer-inner">
-
-      <div class="footer-brand">
-
-        <a href="#" class="logo">
-          <div class="logo-icon">📚</div>
-          Ders<span>Cep</span>
-        </a>
-
-        <p>
-          DersCep, öğrencilerin ders notlarına,
-          konu özetlerine ve eğitim içeriklerine
-          kolayca ulaşabilmesi için geliştirilen
-          öğrenci platformudur.
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <h4>Keşfet</h4>
-
-        <ul>
-          <li><a href="#siniflar">Sınıflar</a></li>
-          <li><a href="#notlar">Ders Notları</a></li>
-          <li><a href="#">Popüler Notlar</a></li>
-          <li><a href="#">Yeni Eklenenler</a></li>
-        </ul>
-
-      </div>
-
-
-      <div>
-
-        <h4>Dersler</h4>
-
-        <ul>
-          <li><a href="#">Matematik</a></li>
-          <li><a href="#">Türk Dili ve Edebiyatı</a></li>
-          <li><a href="#">Fizik</a></li>
-          <li><a href="#">Kimya</a></li>
-        </ul>
-
-      </div>
-
-
-      <div>
-
-        <h4>DersCep</h4>
-
-        <ul>
-          <li><a href="#">Hakkımızda</a></li>
-          <li><a href="#">İletişim</a></li>
-          <li><a href="#">Gizlilik</a></li>
-          <li><a href="#">Kullanım Şartları</a></li>
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <div class="copyright">
-      © 2026 DersCep. Tüm hakları saklıdır.
-    </div>
-
-  </footer>
-
-
-  <!-- =========================
-       SEARCH MODAL
-  ========================== -->
-
-  <div class="modal" id="searchModal">
-
-    <div class="modal-box">
-
-      <div class="modal-head">
-
-        <div>
-          <h3>Not Ara</h3>
-          <p style="color:var(--muted);font-size:13px;">
-            Ders veya konu yaz.
-          </p>
-        </div>
-
-        <button class="close" id="closeModal">
-          ✕
-        </button>
-
-      </div>
-
-      <input
-        id="modalSearch"
-        type="search"
-        placeholder="Örn. Matematik..."
-        style="
-          width:100%;
-          padding:13px;
-          border:1px solid var(--border);
-          border-radius:12px;
-          outline:none;
-        "
+      <button
+        class="icon-button"
+        type="button"
+        data-theme-toggle
+        aria-label="Karanlık moda geç"
       >
+        🌙
+      </button>
 
-      <div class="search-results" id="searchResults"></div>
+      <button
+        class="icon-button mobile-menu"
+        type="button"
+        data-mobile-menu
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
 
     </div>
 
   </div>
 
 
-  <script>
+  <!-- MOBILE NAV -->
 
-    /* =================================
-       DARK MODE
-    ================================= */
+  <nav
+    class="mobile-nav"
+    data-mobile-nav
+    aria-label="Mobil menü"
+  >
 
-    const darkModeBtn = document.getElementById("darkModeBtn");
+    <a href="index.html">
+      Ana Sayfa
+    </a>
 
-    const savedTheme = localStorage.getItem("derscep-theme");
+    <a href="siniflar.html">
+      Sınıflar
+    </a>
 
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-      darkModeBtn.textContent = "☀️";
-    }
+    <a href="dersler.html">
+      Dersler
+    </a>
 
-    darkModeBtn.addEventListener("click", () => {
+    <a href="notlar.html">
+      Tüm Notlar
+    </a>
 
-      document.body.classList.toggle("dark");
+  </nav>
 
-      const dark = document.body.classList.contains("dark");
-
-      localStorage.setItem(
-        "derscep-theme",
-        dark ? "dark" : "light"
-      );
-
-      darkModeBtn.textContent = dark ? "☀️" : "🌙";
-
-    });
+</header>
 
 
-    /* =================================
-       FAVORITES
-    ================================= */
 
-    const favorites =
-      JSON.parse(
-        localStorage.getItem("derscep-favorites") || "[]"
-      );
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    document.querySelectorAll(".favorite").forEach(button => {
-
-      const card = button.closest(".note-card");
-
-      const title = card.dataset.title;
-
-      if (favorites.includes(title)) {
-        button.textContent = "♥";
-        button.dataset.favorite = "true";
-      }
-
-      button.addEventListener("click", event => {
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        const index = favorites.indexOf(title);
-
-        if (index === -1) {
-
-          favorites.push(title);
-
-          button.textContent = "♥";
-          button.dataset.favorite = "true";
-
-        } else {
-
-          favorites.splice(index, 1);
-
-          button.textContent = "♡";
-          button.dataset.favorite = "false";
-
-        }
-
-        localStorage.setItem(
-          "derscep-favorites",
-          JSON.stringify(favorites)
-        );
-
-      });
-
-    });
+<main>
 
 
-    /* =================================
-       SEARCH
-    ================================= */
+<section class="hero">
 
-    const searchForm =
-      document.getElementById("searchForm");
+  <div class="container">
 
-    const searchInput =
-      document.getElementById("searchInput");
+    <div class="hero-content">
 
-    const noteCards =
-      [...document.querySelectorAll(".note-card")];
 
-    searchForm.addEventListener("submit", event => {
+      <div class="hero-badge">
+
+        ✨ Öğrenciler için ücretsiz
+
+      </div>
+
+
+      <h1>
+
+        Ders çalışmanın
+        <br>
+
+        <span>
+          daha kolay yolu.
+        </span>
+
+      </h1>
+
+
+      <p class="hero-description">
+
+        DersCep ile ihtiyacın olan ders notlarını,
+        konu özetlerini ve çalışma kaynaklarını
+        tek yerde bul.
+
+      </p>
+
+
+      <!-- SEARCH -->
+
+      <form
+        class="search-box"
+        id="heroSearch"
+      >
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Ders, konu veya not ara..."
+          autocomplete="off"
+          aria-label="Ders veya konu ara"
+        >
+
+        <button
+          class="search-button"
+          type="submit"
+        >
+
+          🔎 Ara
+
+        </button>
+
+      </form>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     POPÜLER NOTLAR
+===================================================== -->
+
+<section class="section">
+
+  <div class="container">
+
+
+    <div class="section-header">
+
+      <div>
+
+        <h2 class="section-title">
+          Popüler Notlar
+        </h2>
+
+        <p class="section-description">
+          Öğrencilerin en çok görüntülediği notlar.
+        </p>
+
+      </div>
+
+
+      <a
+        href="notlar.html"
+        class="view-all"
+      >
+        Tümünü Gör →
+      </a>
+
+    </div>
+
+
+    <div
+      class="grid grid-3"
+      id="popularNotes"
+    >
+
+      <!-- JavaScript -->
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SINIFLAR
+===================================================== -->
+
+<section class="section">
+
+  <div class="container">
+
+
+    <div class="section-header">
+
+      <div>
+
+        <h2 class="section-title">
+          Sınıfını Seç
+        </h2>
+
+        <p class="section-description">
+          Sana uygun ders notlarını keşfet.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-4">
+
+
+      <a
+        href="notlar.html?grade=9.%20Sınıf"
+        class="class-card"
+      >
+
+        <div class="class-number">
+          9
+        </div>
+
+        <h3>
+          9. Sınıf
+        </h3>
+
+        <p>
+          Ders notlarını keşfet →
+        </p>
+
+      </a>
+
+
+      <a
+        href="notlar.html?grade=10.%20Sınıf"
+        class="class-card"
+      >
+
+        <div class="class-number">
+          10
+        </div>
+
+        <h3>
+          10. Sınıf
+        </h3>
+
+        <p>
+          Ders notlarını keşfet →
+        </p>
+
+      </a>
+
+
+      <a
+        href="notlar.html?grade=11.%20Sınıf"
+        class="class-card"
+      >
+
+        <div class="class-number">
+          11
+        </div>
+
+        <h3>
+          11. Sınıf
+        </h3>
+
+        <p>
+          Ders notlarını keşfet →
+        </p>
+
+      </a>
+
+
+      <a
+        href="notlar.html?grade=12.%20Sınıf"
+        class="class-card"
+      >
+
+        <div class="class-number">
+          12
+        </div>
+
+        <h3>
+          12. Sınıf
+        </h3>
+
+        <p>
+          Ders notlarını keşfet →
+        </p>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ÖNE ÇIKAN NOTLAR
+===================================================== -->
+
+<section class="section">
+
+  <div class="container">
+
+
+    <div class="section-header">
+
+      <div>
+
+        <h2 class="section-title">
+          Öne Çıkan Notlar
+        </h2>
+
+        <p class="section-description">
+          DersCep tarafından öne çıkarılan kaynaklar.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="grid grid-3"
+      id="featuredNotes"
+    >
+
+      <!-- JavaScript -->
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+  <div class="container footer-grid">
+
+
+    <div>
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          📚
+        </div>
+
+        <div>
+          Ders<span>Cep</span>
+        </div>
+
+      </div>
+
+
+      <p style="margin-top: 14px;">
+
+        Öğrencilerin ders çalışmasını
+        kolaylaştırmak için oluşturulan
+        ücretsiz eğitim platformu.
+
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        DersCep
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="index.html">
+            Ana Sayfa
+          </a>
+        </li>
+
+        <li>
+          <a href="notlar.html">
+            Tüm Notlar
+          </a>
+        </li>
+
+        <li>
+          <a href="siniflar.html">
+            Sınıflar
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Kaynaklar
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="dersler.html">
+            Dersler
+          </a>
+        </li>
+
+        <li>
+          <a href="notlar.html">
+            Konu Notları
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Bilgi
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="hakkimizda.html">
+            Hakkımızda
+          </a>
+        </li>
+
+        <li>
+          <a href="iletisim.html">
+            İletişim
+          </a>
+        </li>
+
+        <li>
+          <a href="gizlilik.html">
+            Gizlilik
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    © 2026 DersCep · Tüm hakları saklıdır.
+
+  </div>
+
+
+</footer>
+
+
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+<script src="data/notes.js"></script>
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+/* =====================================================
+   NOT KARTI
+===================================================== */
+
+function createNoteCard(note) {
+
+  return `
+
+    <article class="note-card">
+
+      <div class="note-cover">
+
+        ${note.icon || "📚"}
+
+      </div>
+
+
+      <div class="note-body">
+
+
+        <span class="note-tag">
+
+          ${note.grade}
+
+        </span>
+
+
+        <h3 class="note-title">
+
+          ${note.title}
+
+        </h3>
+
+
+        <p class="note-description">
+
+          ${note.description}
+
+        </p>
+
+
+        <div class="note-footer">
+
+          <span>
+
+            ${note.subject}
+
+            ·
+
+            👁️ ${note.views}
+
+          </span>
+
+
+          <button
+            class="favorite-button"
+            data-favorite="${note.id}"
+            type="button"
+            aria-label="Favorilere ekle"
+          >
+            ♡
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =====================================================
+   POPÜLER NOTLAR
+===================================================== */
+
+function loadPopularNotes() {
+
+  const container =
+    document.getElementById(
+      "popularNotes"
+    );
+
+  if (!container) {
+    return;
+  }
+
+
+  const notes =
+    dersCepPopulerNotlar(6);
+
+
+  container.innerHTML =
+    notes
+      .map(createNoteCard)
+      .join("");
+
+
+  DersCep.favoriteButtons.init();
+
+}
+
+
+/* =====================================================
+   ÖNE ÇIKAN NOTLAR
+===================================================== */
+
+function loadFeaturedNotes() {
+
+  const container =
+    document.getElementById(
+      "featuredNotes"
+    );
+
+  if (!container) {
+    return;
+  }
+
+
+  const notes =
+    dersCepOneCikanNotlar()
+      .slice(0, 6);
+
+
+  container.innerHTML =
+    notes
+      .map(createNoteCard)
+      .join("");
+
+
+  DersCep.favoriteButtons.init();
+
+}
+
+
+/* =====================================================
+   ARAMA
+===================================================== */
+
+const searchForm =
+  document.getElementById(
+    "heroSearch"
+  );
+
+
+if (searchForm) {
+
+  searchForm.addEventListener(
+    "submit",
+    event => {
 
       event.preventDefault();
 
-      const query =
-        searchInput.value
-          .toLowerCase()
-          .trim();
 
-      if (!query) {
-        document
-          .getElementById("notlar")
-          .scrollIntoView();
-
-        return;
-      }
-
-      const results =
-        noteCards.filter(card =>
-          card.dataset.title.includes(query) ||
-          card.dataset.subject.toLowerCase().includes(query)
+      const input =
+        document.getElementById(
+          "searchInput"
         );
 
-      noteCards.forEach(card => {
-        card.style.display =
-          results.includes(card)
-            ? ""
-            : "none";
-      });
-
-      document
-        .getElementById("notlar")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    });
-
-
-    /* =================================
-       MODAL SEARCH
-    ================================= */
-
-    const searchModal =
-      document.getElementById("searchModal");
-
-    const modalSearch =
-      document.getElementById("modalSearch");
-
-    const searchResults =
-      document.getElementById("searchResults");
-
-    document
-      .getElementById("mobileSearchBtn")
-      .addEventListener("click", () => {
-
-        searchModal.classList.add("active");
-
-        setTimeout(() => {
-          modalSearch.focus();
-        }, 100);
-
-      });
-
-
-    document
-      .getElementById("closeModal")
-      .addEventListener("click", () => {
-
-        searchModal.classList.remove("active");
-
-      });
-
-
-    searchModal.addEventListener("click", event => {
-
-      if (event.target === searchModal) {
-        searchModal.classList.remove("active");
-      }
-
-    });
-
-
-    modalSearch.addEventListener("input", () => {
 
       const query =
-        modalSearch.value
-          .toLowerCase()
-          .trim();
+        input.value.trim();
+
 
       if (!query) {
-        searchResults.innerHTML = "";
-        return;
-      }
 
-      const results =
-        noteCards.filter(card =>
-          card.dataset.title.includes(query) ||
-          card.dataset.subject.toLowerCase().includes(query)
-        );
-
-      if (!results.length) {
-
-        searchResults.innerHTML = `
-          <div style="color:var(--muted);padding:10px;">
-            Sonuç bulunamadı.
-          </div>
-        `;
+        window.location.href =
+          "notlar.html";
 
         return;
+
       }
 
-      searchResults.innerHTML =
-        results.map(card => {
 
-          const title =
-            card.querySelector("h3").textContent;
+      window.location.href =
+        "notlar.html?search=" +
+        encodeURIComponent(query);
 
-          const tag =
-            card.querySelector(".tag").textContent;
+    }
+  );
 
-          return `
-            <div class="result">
-              <strong>${title}</strong>
-              <div style="font-size:12px;color:var(--muted);">
-                ${tag}
-              </div>
-            </div>
-          `;
-
-        }).join("");
-
-    });
+}
 
 
-    /* =================================
-       START BUTTON
-    ================================= */
+/* =====================================================
+   BAŞLAT
+===================================================== */
 
-    document
-      .getElementById("startBtn")
-      .addEventListener("click", () => {
+loadPopularNotes();
 
-        document
-          .getElementById("notlar")
-          .scrollIntoView({
-            behavior: "smooth"
-          });
+loadFeaturedNotes();
 
-      });
+</script>
 
-
-    /* =================================
-       CLASS CARDS
-    ================================= */
-
-    document
-      .querySelectorAll(".class-card")
-      .forEach(card => {
-
-        card.addEventListener("click", event => {
-
-          event.preventDefault();
-
-          const selectedClass =
-            card.dataset.class;
-
-          searchInput.value =
-            selectedClass + ". sınıf";
-
-          document
-            .getElementById("notlar")
-            .scrollIntoView({
-              behavior: "smooth"
-            });
-
-        });
-
-      });
-
-  </script>
 
 </body>
+
 </html>
