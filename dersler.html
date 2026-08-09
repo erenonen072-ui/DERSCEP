@@ -1,0 +1,1011 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#2563eb"
+  >
+
+  <meta
+    name="description"
+    content="DersCep dersler. Matematik, Türkçe, Fen Bilimleri, Fizik, Kimya, Biyoloji, Tarih, Coğrafya ve daha fazlası."
+  >
+
+  <title>Dersler | DersCep</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <style>
+
+    /* ==================================================
+       SAYFA
+    ================================================== */
+
+    .subjects-page {
+      padding: 55px 0 90px;
+    }
+
+
+    /* ==================================================
+       BAŞLIK
+    ================================================== */
+
+    .page-header {
+      margin-bottom: 38px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+
+    /* ==================================================
+       DERSLER
+    ================================================== */
+
+    .subjects-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+    }
+
+
+    /* ==================================================
+       DERS KARTI
+    ================================================== */
+
+    .subject-box {
+
+      position: relative;
+
+      display: block;
+
+      padding: 25px;
+
+      min-height: 205px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .subject-box:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--primary);
+
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.10);
+
+    }
+
+
+    /* ==================================================
+       İKON
+    ================================================== */
+
+    .subject-icon {
+
+      width: 62px;
+      height: 62px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 18px;
+
+      border-radius: 17px;
+
+      background: var(--primary-light);
+
+      font-size: 29px;
+
+    }
+
+
+    /* ==================================================
+       BAŞLIK
+    ================================================== */
+
+    .subject-box h2 {
+
+      font-size: 20px;
+
+      line-height: 1.25;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .subject-box p {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.55;
+
+      max-width: 350px;
+
+    }
+
+
+    /* ==================================================
+       OK
+    ================================================== */
+
+    .subject-arrow {
+
+      position: absolute;
+
+      right: 22px;
+      bottom: 22px;
+
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--primary-light);
+
+      color: var(--primary);
+
+      font-size: 18px;
+
+      transition:
+        transform .2s ease;
+
+    }
+
+
+    .subject-box:hover .subject-arrow {
+
+      transform: translateX(4px);
+
+    }
+
+
+    /* ==================================================
+       BİLGİ ALANI
+    ================================================== */
+
+    .subjects-info {
+
+      margin-top: 35px;
+
+      padding: 23px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      background: var(--surface);
+
+    }
+
+
+    .subjects-info strong {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .subjects-info p {
+
+      margin: 0;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.6;
+
+    }
+
+
+    /* ==================================================
+       TABLET
+    ================================================== */
+
+    @media (max-width: 900px) {
+
+      .subjects-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+    }
+
+
+    /* ==================================================
+       MOBİL
+    ================================================== */
+
+    @media (max-width: 600px) {
+
+      .subjects-page {
+
+        padding-top: 35px;
+
+      }
+
+      .subjects-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .subject-box {
+
+        min-height: 180px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="header">
+
+  <div class="container navbar">
+
+
+    <!-- LOGO -->
+
+    <a
+      href="index.html"
+      class="logo"
+      aria-label="DersCep Ana Sayfa"
+    >
+
+      <div class="logo-icon">
+        📚
+      </div>
+
+      <div>
+        Ders<span>Cep</span>
+      </div>
+
+    </a>
+
+
+    <!-- NAVİGASYON -->
+
+    <nav
+      class="nav-links"
+      aria-label="Ana menü"
+    >
+
+      <a href="index.html">
+        Ana Sayfa
+      </a>
+
+      <a href="siniflar.html">
+        Sınıflar
+      </a>
+
+      <a
+        href="dersler.html"
+        class="active"
+      >
+        Dersler
+      </a>
+
+      <a href="notlar.html">
+        Tüm Notlar
+      </a>
+
+    </nav>
+
+
+    <!-- SAĞ MENÜ -->
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-button"
+        data-theme-toggle
+        type="button"
+        aria-label="Tema değiştir"
+      >
+        🌙
+      </button>
+
+
+      <button
+        class="icon-button mobile-menu"
+        data-mobile-menu
+        type="button"
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- MOBİL MENÜ -->
+
+  <nav
+    class="mobile-nav"
+    data-mobile-nav
+  >
+
+    <a href="index.html">
+      Ana Sayfa
+    </a>
+
+    <a href="siniflar.html">
+      Sınıflar
+    </a>
+
+    <a href="dersler.html">
+      Dersler
+    </a>
+
+    <a href="notlar.html">
+      Tüm Notlar
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- ==================================================
+     ANA İÇERİK
+================================================== -->
+
+<main>
+
+
+<section class="subjects-page">
+
+  <div class="container">
+
+
+    <!-- BAŞLIK -->
+
+    <div class="page-header">
+
+      <h1>
+        Dersler
+      </h1>
+
+      <p>
+        İstediğin dersi seç. 5. sınıftan
+        12. sınıfa kadar ilgili ders
+        notlarını, konu özetlerini ve
+        çalışma kaynaklarını keşfet.
+      </p>
+
+    </div>
+
+
+    <!-- ==================================================
+         DERS KARTLARI
+    ================================================== -->
+
+    <div class="subjects-grid">
+
+
+      <!-- TÜRKÇE -->
+
+      <a
+        href="notlar.html?subject=Türkçe"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          📖
+        </div>
+
+        <h2>
+          Türkçe
+        </h2>
+
+        <p>
+          Türkçe konu anlatımları,
+          dil bilgisi, paragraf ve
+          yazım kuralları.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- MATEMATİK -->
+
+      <a
+        href="notlar.html?subject=Matematik"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          📐
+        </div>
+
+        <h2>
+          Matematik
+        </h2>
+
+        <p>
+          Matematik konu özetleri,
+          formüller ve çalışma notları.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- FEN BİLİMLERİ -->
+
+      <a
+        href="notlar.html?subject=Fen%20Bilimleri"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          🔬
+        </div>
+
+        <h2>
+          Fen Bilimleri
+        </h2>
+
+        <p>
+          Fen bilimleri konu özetleri,
+          deneyler ve temel kavramlar.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- SOSYAL BİLGİLER -->
+
+      <a
+        href="notlar.html?subject=Sosyal%20Bilgiler"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          🌍
+        </div>
+
+        <h2>
+          Sosyal Bilgiler
+        </h2>
+
+        <p>
+          Tarih, coğrafya ve sosyal
+          bilgiler konu özetleri.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- İNGİLİZCE -->
+
+      <a
+        href="notlar.html?subject=İngilizce"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          🇬🇧
+        </div>
+
+        <h2>
+          İngilizce
+        </h2>
+
+        <p>
+          İngilizce kelime, grammar,
+          konu ve çalışma notları.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- TÜRK DİLİ VE EDEBİYATI -->
+
+      <a
+        href="notlar.html?subject=Türk%20Dili%20ve%20Edebiyatı"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          📝
+        </div>
+
+        <h2>
+          Türk Dili ve Edebiyatı
+        </h2>
+
+        <p>
+          Edebiyat dönemleri, sanatçılar,
+          eserler ve konu özetleri.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- FİZİK -->
+
+      <a
+        href="notlar.html?subject=Fizik"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          ⚡
+        </div>
+
+        <h2>
+          Fizik
+        </h2>
+
+        <p>
+          Fizik formülleri, konu
+          özetleri ve temel kavramlar.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- KİMYA -->
+
+      <a
+        href="notlar.html?subject=Kimya"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          🧪
+        </div>
+
+        <h2>
+          Kimya
+        </h2>
+
+        <p>
+          Kimya konu özetleri,
+          formüller ve temel bilgiler.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- BİYOLOJİ -->
+
+      <a
+        href="notlar.html?subject=Biyoloji"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          🧬
+        </div>
+
+        <h2>
+          Biyoloji
+        </h2>
+
+        <p>
+          Biyoloji konu anlatımları,
+          canlılar ve temel kavramlar.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- TARİH -->
+
+      <a
+        href="notlar.html?subject=Tarih"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          🏛️
+        </div>
+
+        <h2>
+          Tarih
+        </h2>
+
+        <p>
+          Tarih konu özetleri,
+          önemli olaylar ve bilgiler.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- COĞRAFYA -->
+
+      <a
+        href="notlar.html?subject=Coğrafya"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          🗺️
+        </div>
+
+        <h2>
+          Coğrafya
+        </h2>
+
+        <p>
+          Coğrafya konu özetleri,
+          haritalar ve temel bilgiler.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- DİN KÜLTÜRÜ -->
+
+      <a
+        href="notlar.html?subject=Din%20Kültürü"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          📚
+        </div>
+
+        <h2>
+          Din Kültürü
+        </h2>
+
+        <p>
+          Din kültürü ve ahlak bilgisi
+          ders notları ve konu özetleri.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- FELSEFE -->
+
+      <a
+        href="notlar.html?subject=Felsefe"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          💭
+        </div>
+
+        <h2>
+          Felsefe
+        </h2>
+
+        <p>
+          Felsefi düşünce, filozoflar
+          ve temel kavramlar.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- BİLİŞİM -->
+
+      <a
+        href="notlar.html?subject=Bilişim"
+        class="subject-box"
+      >
+
+        <div class="subject-icon">
+          💻
+        </div>
+
+        <h2>
+          Bilişim Teknolojileri
+        </h2>
+
+        <p>
+          Bilgisayar, internet,
+          yazılım ve teknoloji konuları.
+        </p>
+
+        <span class="subject-arrow">
+          →
+        </span>
+
+      </a>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         BİLGİ
+    ================================================== -->
+
+    <div class="subjects-info">
+
+      <strong>
+        📚 DersCep ile ders çalış
+      </strong>
+
+      <p>
+        Dersini seçerek ilgili ders
+        notlarına ulaşabilirsin.
+        DersCep'i ilerleyen aşamalarda
+        soru bankaları, denemeler,
+        favoriler ve kişisel çalışma
+        araçlarıyla daha da geliştireceğiz.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="footer">
+
+  <div class="container footer-grid">
+
+
+    <!-- KOLON 1 -->
+
+    <div>
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          📚
+        </div>
+
+        <div>
+          Ders<span>Cep</span>
+        </div>
+
+      </div>
+
+      <p style="margin-top:14px;">
+        Öğrenciler için ücretsiz ders
+        notları ve çalışma kaynakları.
+      </p>
+
+    </div>
+
+
+    <!-- KOLON 2 -->
+
+    <div>
+
+      <strong>
+        DersCep
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="index.html">
+            Ana Sayfa
+          </a>
+        </li>
+
+        <li>
+          <a href="notlar.html">
+            Tüm Notlar
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- KOLON 3 -->
+
+    <div>
+
+      <strong>
+        Keşfet
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="siniflar.html">
+            Sınıflar
+          </a>
+        </li>
+
+        <li>
+          <a href="dersler.html">
+            Dersler
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- KOLON 4 -->
+
+    <div>
+
+      <strong>
+        Bilgi
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="hakkimizda.html">
+            Hakkımızda
+          </a>
+        </li>
+
+        <li>
+          <a href="iletisim.html">
+            İletişim
+          </a>
+        </li>
+
+        <li>
+          <a href="gizlilik.html">
+            Gizlilik
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    © 2026 DersCep · Tüm hakları saklıdır.
+
+  </div>
+
+</footer>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>
+```
