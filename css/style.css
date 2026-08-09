@@ -733,3 +733,43 @@ body.dark .note-cover {
   background: #172554;
   color: #bfdbfe;
 }
+/* =========================
+   MOBILE NAV
+========================= */
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 900px) {
+
+  .mobile-nav {
+    padding: 10px 16px 16px;
+
+    border-top: 1px solid var(--border);
+
+    background: var(--surface);
+  }
+
+  .mobile-nav.open {
+    display: block;
+  }
+
+  .mobile-nav a {
+    display: block;
+
+    padding: 12px 10px;
+
+    border-radius: 10px;
+
+    color: var(--text);
+
+    font-weight: 650;
+  }
+
+  .mobile-nav a:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+
+}
