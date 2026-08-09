@@ -1,382 +1,284 @@
-```javascript
-/* =====================================================
-   DERSCEP - NOTES DATA
-   Merkezi ders notları veritabanı
-   5. SINIFTAN 12. SINIFA
-===================================================== */
-
 "use strict";
 
-
 /* =====================================================
-   NOTLAR
+   DERSCEP - NOT VERİLERİ
 ===================================================== */
 
 const DERSCEP_NOTLARI = [
 
-  /* ===================================================
+  /* =====================================================
      5. SINIF
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-5-dogal-sayilar",
+    id: "5-matematik-dogal-sayilar",
     title: "Doğal Sayılar",
     subject: "Matematik",
     grade: "5. Sınıf",
     category: "Ders Notu",
-    description:
-      "Doğal sayılar, basamak değerleri, sayıların okunması ve yazılması.",
+    description: "Doğal sayılar ve temel işlemler hakkında konu özeti.",
     topics: [
       "Doğal sayılar",
-      "Basamak değeri",
-      "Sayı okuma",
-      "Sayı yazma"
+      "Toplama",
+      "Çıkarma",
+      "Çarpma",
+      "Bölme"
     ],
-    icon: "📐",
-    views: 420,
+    icon: "🔢",
+    views: 120,
     featured: true,
     date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "turkce-5-sozcuk-anlami",
+    id: "5-turkce-sozcukte-anlam",
     title: "Sözcükte Anlam",
     subject: "Türkçe",
     grade: "5. Sınıf",
     category: "Konu Özeti",
-    description:
-      "Sözcüklerin gerçek, mecaz ve terim anlamları.",
+    description: "Sözcüklerin anlam özellikleri ve anlam ilişkileri.",
     topics: [
       "Gerçek anlam",
       "Mecaz anlam",
-      "Terim anlam"
+      "Terim anlam",
+      "Eş anlam",
+      "Zıt anlam"
     ],
     icon: "📖",
-    views: 380,
+    views: 95,
     featured: true,
-    date: "2026-08-08",
+    date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "fen-5-dunya-gunes",
-    title: "Dünya, Güneş ve Ay",
+    id: "5-fen-dunyamiz",
+    title: "Dünyamız ve Evren",
     subject: "Fen Bilimleri",
     grade: "5. Sınıf",
     category: "Ders Notu",
-    description:
-      "Dünya, Güneş ve Ay'ın temel özellikleri ve hareketleri.",
+    description: "Dünya, Güneş, Ay ve uzay hakkında temel bilgiler.",
     topics: [
       "Dünya",
       "Güneş",
       "Ay",
-      "Dönme"
+      "Uzay"
     ],
     icon: "🌍",
-    views: 310,
+    views: 88,
     featured: false,
-    date: "2026-08-07",
-    pdf: "#"
-  },
-
-  {
-    id: "sosyal-5-birey-toplum",
-    title: "Birey ve Toplum",
-    subject: "Sosyal Bilgiler",
-    grade: "5. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Bireyin toplum içerisindeki yeri, hakları ve sorumlulukları.",
-    topics: [
-      "Birey",
-      "Toplum",
-      "Hak",
-      "Sorumluluk"
-    ],
-    icon: "🌎",
-    views: 275,
-    featured: false,
-    date: "2026-08-06",
+    date: "2026-08-08",
     pdf: "#"
   },
 
 
-  /* ===================================================
+  /* =====================================================
      6. SINIF
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-6-tam-sayilar",
-    title: "Tam Sayılar",
+    id: "6-matematik-kesirler",
+    title: "Kesirler",
     subject: "Matematik",
     grade: "6. Sınıf",
     category: "Ders Notu",
-    description:
-      "Tam sayılar, sayı doğrusu ve tam sayılarla işlemler.",
+    description: "Kesir çeşitleri ve kesirlerle yapılan temel işlemler.",
     topics: [
-      "Tam sayılar",
-      "Sayı doğrusu",
-      "Toplama",
-      "Çıkarma"
+      "Kesir",
+      "Bileşik kesir",
+      "Tam sayılı kesir",
+      "Kesirlerde işlemler"
     ],
-    icon: "📐",
-    views: 515,
+    icon: "➗",
+    views: 143,
     featured: true,
     date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "turkce-6-isimler",
-    title: "İsimler",
+    id: "6-turkce-fiiller",
+    title: "Fiiller",
     subject: "Türkçe",
     grade: "6. Sınıf",
-    category: "Ders Notu",
-    description:
-      "İsim türleri ve isimlerin cümledeki kullanımları.",
+    category: "Konu Özeti",
+    description: "Fiillerin özellikleri ve fiil türleri.",
     topics: [
-      "İsim",
-      "Özel isim",
-      "Cins isim",
-      "Çoğul isim"
+      "Fiil",
+      "İş fiili",
+      "Durum fiili",
+      "Oluş fiili"
     ],
-    icon: "📖",
-    views: 290,
-    featured: false,
+    icon: "✍️",
+    views: 104,
+    featured: true,
     date: "2026-08-08",
     pdf: "#"
   },
 
   {
-    id: "fen-6-vucudumuzdaki-sistemler",
+    id: "6-fen-vucudumuz",
     title: "Vücudumuzdaki Sistemler",
     subject: "Fen Bilimleri",
     grade: "6. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "İnsan vücudundaki temel sistemler ve görevleri.",
+    category: "Ders Notu",
+    description: "İnsan vücudundaki temel sistemler hakkında bilgiler.",
     topics: [
-      "Vücut",
       "Sistemler",
-      "Organlar"
+      "Sindirim",
+      "Dolaşım",
+      "Solunum"
     ],
-    icon: "🧬",
-    views: 350,
-    featured: true,
+    icon: "🫀",
+    views: 91,
+    featured: false,
     date: "2026-08-07",
     pdf: "#"
   },
 
-  {
-    id: "sosyal-6-tarih",
-    title: "Türklerin Tarihî Yolculuğu",
-    subject: "Sosyal Bilgiler",
-    grade: "6. Sınıf",
-    category: "Ders Notu",
-    description:
-      "Türklerin tarih boyunca kurduğu devletler ve önemli gelişmeler.",
-    topics: [
-      "Türkler",
-      "Devlet",
-      "Göç",
-      "Kültür"
-    ],
-    icon: "🏛️",
-    views: 240,
-    featured: false,
-    date: "2026-08-06",
-    pdf: "#"
-  },
 
-
-  /* ===================================================
+  /* =====================================================
      7. SINIF
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-7-oran-oranti",
+    id: "7-matematik-oran-oranti",
     title: "Oran ve Orantı",
     subject: "Matematik",
     grade: "7. Sınıf",
     category: "Ders Notu",
-    description:
-      "Oran, orantı ve doğru orantı konularının temel kuralları.",
+    description: "Oran ve orantının temel kuralları ve soru çözümleri.",
     topics: [
       "Oran",
       "Orantı",
-      "Doğru orantı"
+      "Doğru orantı",
+      "Ters orantı"
     ],
-    icon: "📐",
-    views: 640,
+    icon: "📊",
+    views: 165,
     featured: true,
     date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "mat-7-yuzdeler",
-    title: "Yüzdeler",
-    subject: "Matematik",
+    id: "7-turkce-cumle",
+    title: "Cümlede Anlam",
+    subject: "Türkçe",
     grade: "7. Sınıf",
     category: "Konu Özeti",
-    description:
-      "Yüzde hesaplama, artış, azalış ve yüzde problemleri.",
+    description: "Cümlelerin anlam özellikleri ve anlam ilişkileri.",
     topics: [
-      "Yüzde",
-      "Yüzde artış",
-      "Yüzde azalış"
+      "Cümle",
+      "Neden-sonuç",
+      "Amaç-sonuç",
+      "Koşul"
     ],
-    icon: "％",
-    views: 480,
-    featured: false,
+    icon: "📝",
+    views: 132,
+    featured: true,
     date: "2026-08-08",
     pdf: "#"
   },
 
   {
-    id: "turkce-7-fiiller",
-    title: "Fiiller",
-    subject: "Türkçe",
+    id: "7-fen-hucre",
+    title: "Hücre ve Bölünmeler",
+    subject: "Fen Bilimleri",
     grade: "7. Sınıf",
     category: "Ders Notu",
-    description:
-      "Fiillerin özellikleri, kipleri ve kişi ekleri.",
+    description: "Hücrenin yapısı ve hücre bölünmelerinin temel özellikleri.",
     topics: [
-      "Fiil",
-      "Kip",
-      "Kişi",
-      "Fiil çekimi"
+      "Hücre",
+      "Mitoz",
+      "Mayoz",
+      "Organeller"
     ],
-    icon: "✍️",
-    views: 410,
-    featured: true,
+    icon: "🧬",
+    views: 115,
+    featured: false,
     date: "2026-08-07",
     pdf: "#"
   },
 
-  {
-    id: "fen-7-hucre",
-    title: "Hücre ve Bölünmeler",
-    subject: "Fen Bilimleri",
-    grade: "7. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Hücrenin yapısı ve hücre bölünmelerinin temel özellikleri.",
-    topics: [
-      "Hücre",
-      "Mitoz",
-      "Bölünme"
-    ],
-    icon: "🧬",
-    views: 330,
-    featured: false,
-    date: "2026-08-05",
-    pdf: "#"
-  },
 
-
-  /* ===================================================
+  /* =====================================================
      8. SINIF
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-8-carpanlar-katlar",
+    id: "8-matematik-carpanlar",
     title: "Çarpanlar ve Katlar",
     subject: "Matematik",
     grade: "8. Sınıf",
     category: "Ders Notu",
-    description:
-      "Çarpanlar, katlar, asal sayılar ve ortak bölenler.",
+    description: "Çarpanlar, katlar, EBOB ve EKOK konularının özeti.",
     topics: [
       "Çarpan",
       "Kat",
-      "Asal sayı",
       "EBOB",
       "EKOK"
     ],
-    icon: "📐",
-    views: 920,
+    icon: "🔢",
+    views: 214,
     featured: true,
     date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "mat-8-uslu-ifadeler",
+    id: "8-matematik-uslu",
     title: "Üslü İfadeler",
     subject: "Matematik",
     grade: "8. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Üslü ifadeler ve üslü ifadelerle yapılan temel işlemler.",
+    category: "Ders Notu",
+    description: "Üslü ifadeler ve üs alma kuralları.",
     topics: [
-      "Üs",
       "Üslü ifade",
+      "Üs",
+      "Taban",
       "Üs kuralları"
     ],
-    icon: "🔢",
-    views: 860,
+    icon: "²",
+    views: 196,
     featured: true,
     date: "2026-08-08",
     pdf: "#"
   },
 
   {
-    id: "turkce-8-paragraf",
+    id: "8-turkce-paragraf",
     title: "Paragrafta Anlam",
     subject: "Türkçe",
     grade: "8. Sınıf",
-    category: "Ders Notu",
-    description:
-      "Paragrafın ana düşüncesi, yardımcı düşünce ve paragraf soruları.",
+    category: "Konu Özeti",
+    description: "Paragraf sorularında dikkat edilmesi gereken temel noktalar.",
     topics: [
       "Ana düşünce",
       "Yardımcı düşünce",
-      "Paragraf"
+      "Konu",
+      "Başlık"
     ],
-    icon: "📖",
-    views: 790,
+    icon: "📚",
+    views: 183,
     featured: true,
-    date: "2026-08-08",
-    pdf: "#"
-  },
-
-  {
-    id: "fen-8-dna",
-    title: "DNA ve Genetik Kod",
-    subject: "Fen Bilimleri",
-    grade: "8. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "DNA'nın yapısı, genetik kod ve kalıtımın temel kavramları.",
-    topics: [
-      "DNA",
-      "Gen",
-      "Kromozom",
-      "Kalıtım"
-    ],
-    icon: "🧬",
-    views: 680,
-    featured: false,
     date: "2026-08-07",
     pdf: "#"
   },
 
 
-  /* ===================================================
+  /* =====================================================
      9. SINIF
-     MEVCUT NOTLAR
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-9-uslu-ifadeler",
+    id: "9-matematik-uslu",
     title: "Üslü İfadeler",
     subject: "Matematik",
     grade: "9. Sınıf",
     category: "Ders Notu",
-    description:
-      "Üslü ifadelerin temel kuralları, özellikleri ve örnek soru çözümleri.",
+    description: "Üslü ifadelerin temel kuralları ve örnek soru çözümleri.",
     topics: [
       "Üslü ifadeler",
       "Üs kuralları",
@@ -391,18 +293,16 @@ const DERSCEP_NOTLARI = [
   },
 
   {
-    id: "mat-9-koklu-sayilar",
+    id: "9-matematik-koklu",
     title: "Köklü Sayılar",
     subject: "Matematik",
     grade: "9. Sınıf",
     category: "Konu Özeti",
-    description:
-      "Köklü sayıların tanımı, sadeleştirme işlemleri ve temel kurallar.",
+    description: "Köklü sayıların tanımı ve temel işlemler.",
     topics: [
       "Köklü sayılar",
       "Karekök",
-      "Sadeleştirme",
-      "Kök dışına çıkarma"
+      "Sadeleştirme"
     ],
     icon: "√",
     views: 932,
@@ -412,34 +312,12 @@ const DERSCEP_NOTLARI = [
   },
 
   {
-    id: "mat-9-denklemler",
-    title: "Birinci Dereceden Denklemler",
-    subject: "Matematik",
-    grade: "9. Sınıf",
-    category: "Ders Notu",
-    description:
-      "Birinci dereceden denklemlerin çözüm yöntemleri ve örnekler.",
-    topics: [
-      "Denklem",
-      "Bilinmeyen",
-      "Eşitlik",
-      "Çözüm kümesi"
-    ],
-    icon: "➗",
-    views: 756,
-    featured: false,
-    date: "2026-08-07",
-    pdf: "#"
-  },
-
-  {
-    id: "edebiyat-9-siir",
+    id: "9-edebiyat-siir",
     title: "Şiir Bilgisi",
     subject: "Türk Dili ve Edebiyatı",
     grade: "9. Sınıf",
     category: "Konu Özeti",
-    description:
-      "Şiirin temel özellikleri, nazım birimleri, ölçü ve kafiye bilgileri.",
+    description: "Şiirin temel özellikleri, nazım birimleri, ölçü ve kafiye.",
     topics: [
       "Şiir",
       "Nazım",
@@ -455,34 +333,12 @@ const DERSCEP_NOTLARI = [
   },
 
   {
-    id: "edebiyat-9-edebi-sanatlar",
-    title: "Edebi Sanatlar",
-    subject: "Türk Dili ve Edebiyatı",
-    grade: "9. Sınıf",
-    category: "Ders Notu",
-    description:
-      "Teşbih, kişileştirme, mecaz ve diğer önemli edebi sanatlar.",
-    topics: [
-      "Teşbih",
-      "Kişileştirme",
-      "Mecaz",
-      "Edebi sanatlar"
-    ],
-    icon: "✍️",
-    views: 1130,
-    featured: true,
-    date: "2026-08-06",
-    pdf: "#"
-  },
-
-  {
-    id: "fizik-9-hareket",
+    id: "9-fizik-hareket",
     title: "Hareket ve Kuvvet",
     subject: "Fizik",
     grade: "9. Sınıf",
     category: "Ders Notu",
-    description:
-      "Hareket, kuvvet, hız, sürat ve temel fizik kavramlarının özeti.",
+    description: "Hareket, kuvvet, hız ve sürat hakkında temel bilgiler.",
     topics: [
       "Hareket",
       "Kuvvet",
@@ -497,34 +353,12 @@ const DERSCEP_NOTLARI = [
   },
 
   {
-    id: "fizik-9-enerji",
-    title: "Enerji",
-    subject: "Fizik",
-    grade: "9. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Enerji türleri, iş, güç ve enerji arasındaki ilişkiler.",
-    topics: [
-      "Enerji",
-      "İş",
-      "Güç",
-      "Kinetik enerji"
-    ],
-    icon: "🔋",
-    views: 841,
-    featured: false,
-    date: "2026-08-05",
-    pdf: "#"
-  },
-
-  {
-    id: "kimya-9-atom",
+    id: "9-kimya-atom",
     title: "Atom ve Periyodik Sistem",
     subject: "Kimya",
     grade: "9. Sınıf",
     category: "Ders Notu",
-    description:
-      "Atomun yapısı, proton, nötron, elektron ve periyodik sistemin temelleri.",
+    description: "Atomun yapısı ve periyodik sistemin temelleri.",
     topics: [
       "Atom",
       "Proton",
@@ -540,34 +374,12 @@ const DERSCEP_NOTLARI = [
   },
 
   {
-    id: "kimya-9-madde",
-    title: "Maddenin Halleri",
-    subject: "Kimya",
-    grade: "9. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Katı, sıvı, gaz ve plazma hâllerinin temel özellikleri.",
-    topics: [
-      "Katı",
-      "Sıvı",
-      "Gaz",
-      "Plazma"
-    ],
-    icon: "🧪",
-    views: 645,
-    featured: false,
-    date: "2026-08-04",
-    pdf: "#"
-  },
-
-  {
-    id: "biyoloji-9-hucre",
+    id: "9-biyoloji-hucre",
     title: "Hücre",
     subject: "Biyoloji",
     grade: "9. Sınıf",
     category: "Ders Notu",
-    description:
-      "Hücrenin temel yapısı, organeller ve hücre çeşitleri.",
+    description: "Hücrenin temel yapısı ve organeller.",
     topics: [
       "Hücre",
       "Organeller",
@@ -582,13 +394,12 @@ const DERSCEP_NOTLARI = [
   },
 
   {
-    id: "tarih-9-ilk-cag",
+    id: "9-tarih-ilk-cag",
     title: "İlk Çağ Medeniyetleri",
     subject: "Tarih",
     grade: "9. Sınıf",
     category: "Ders Notu",
-    description:
-      "İlk Çağ'da kurulan önemli medeniyetler ve tarihî gelişmeler.",
+    description: "İlk Çağ'da kurulan önemli medeniyetler.",
     topics: [
       "İlk Çağ",
       "Medeniyet",
@@ -603,13 +414,12 @@ const DERSCEP_NOTLARI = [
   },
 
   {
-    id: "cografya-9-doga",
+    id: "9-cografya-doga",
     title: "Doğa ve İnsan",
     subject: "Coğrafya",
     grade: "9. Sınıf",
     category: "Konu Özeti",
-    description:
-      "Doğa, insan ve çevre arasındaki ilişkiyi açıklayan temel bilgiler.",
+    description: "Doğa, insan ve çevre arasındaki ilişki.",
     topics: [
       "Doğa",
       "İnsan",
@@ -624,39 +434,37 @@ const DERSCEP_NOTLARI = [
   },
 
 
-  /* ===================================================
+  /* =====================================================
      10. SINIF
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-10-fonksiyonlar",
+    id: "10-matematik-fonksiyon",
     title: "Fonksiyonlar",
     subject: "Matematik",
     grade: "10. Sınıf",
     category: "Ders Notu",
-    description:
-      "Fonksiyon kavramı, tanım kümesi, değer kümesi ve fonksiyon çeşitleri.",
+    description: "Fonksiyonların tanımı, gösterimi ve temel özellikleri.",
     topics: [
       "Fonksiyon",
       "Tanım kümesi",
       "Değer kümesi",
-      "Fonksiyon çeşitleri"
+      "Görüntü kümesi"
     ],
-    icon: "📐",
-    views: 720,
+    icon: "ƒ",
+    views: 210,
     featured: true,
     date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "edebiyat-10-hikaye",
+    id: "10-edebiyat-hikaye",
     title: "Hikâye",
     subject: "Türk Dili ve Edebiyatı",
     grade: "10. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Hikâyenin özellikleri, yapı unsurları ve hikâye türleri.",
+    category: "Ders Notu",
+    description: "Hikâye türünün özellikleri ve yapı unsurları.",
     topics: [
       "Hikâye",
       "Olay",
@@ -665,20 +473,19 @@ const DERSCEP_NOTLARI = [
       "Zaman"
     ],
     icon: "📖",
-    views: 540,
+    views: 154,
     featured: true,
     date: "2026-08-08",
     pdf: "#"
   },
 
   {
-    id: "fizik-10-elektrik",
-    title: "Elektrik ve Devreler",
+    id: "10-fizik-elektrik",
+    title: "Elektrik",
     subject: "Fizik",
     grade: "10. Sınıf",
     category: "Ders Notu",
-    description:
-      "Elektrik akımı, gerilim, direnç ve basit elektrik devreleri.",
+    description: "Elektrik akımı, gerilim ve direnç hakkında temel bilgiler.",
     topics: [
       "Elektrik",
       "Akım",
@@ -686,46 +493,24 @@ const DERSCEP_NOTLARI = [
       "Direnç"
     ],
     icon: "⚡",
-    views: 490,
+    views: 126,
     featured: false,
     date: "2026-08-07",
     pdf: "#"
   },
 
-  {
-    id: "kimya-10-karisimlar",
-    title: "Karışımlar",
-    subject: "Kimya",
-    grade: "10. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Homojen ve heterojen karışımlar ile ayırma yöntemleri.",
-    topics: [
-      "Karışım",
-      "Homojen",
-      "Heterojen",
-      "Ayırma yöntemleri"
-    ],
-    icon: "🧪",
-    views: 420,
-    featured: false,
-    date: "2026-08-06",
-    pdf: "#"
-  },
 
-
-  /* ===================================================
+  /* =====================================================
      11. SINIF
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-11-trigonometri",
+    id: "11-matematik-trigonometri",
     title: "Trigonometri",
     subject: "Matematik",
     grade: "11. Sınıf",
     category: "Ders Notu",
-    description:
-      "Trigonometrik oranlar, açı ölçüleri ve temel trigonometri bağıntıları.",
+    description: "Trigonometrik oranlar ve temel trigonometrik bağıntılar.",
     topics: [
       "Sinüs",
       "Kosinüs",
@@ -733,180 +518,112 @@ const DERSCEP_NOTLARI = [
       "Trigonometrik oranlar"
     ],
     icon: "📐",
-    views: 820,
+    views: 246,
     featured: true,
     date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "edebiyat-11-cumhuriyet",
-    title: "Cumhuriyet Dönemi Türk Edebiyatı",
-    subject: "Türk Dili ve Edebiyatı",
+    id: "11-fizik-kuvvet",
+    title: "Kuvvet ve Hareket",
+    subject: "Fizik",
     grade: "11. Sınıf",
     category: "Ders Notu",
-    description:
-      "Cumhuriyet dönemi edebiyatının temel özellikleri, sanatçıları ve eserleri.",
+    description: "Kuvvet ve hareket arasındaki ilişki.",
     topics: [
-      "Cumhuriyet",
-      "Şiir",
-      "Roman",
-      "Hikâye"
+      "Kuvvet",
+      "Hareket",
+      "Newton",
+      "İvme"
     ],
-    icon: "📖",
-    views: 610,
+    icon: "🚀",
+    views: 177,
     featured: true,
     date: "2026-08-08",
     pdf: "#"
   },
 
   {
-    id: "fizik-11-manyetizma",
-    title: "Manyetizma",
-    subject: "Fizik",
+    id: "11-kimya-denge",
+    title: "Kimyasal Denge",
+    subject: "Kimya",
     grade: "11. Sınıf",
     category: "Konu Özeti",
-    description:
-      "Mıknatıslar, manyetik alan ve manyetik kuvvetin temel özellikleri.",
+    description: "Kimyasal denge ve dengeye etki eden faktörler.",
     topics: [
-      "Mıknatıs",
-      "Manyetik alan",
-      "Manyetik kuvvet"
+      "Denge",
+      "Denge sabiti",
+      "Le Chatelier"
     ],
-    icon: "🧲",
-    views: 450,
+    icon: "⚗️",
+    views: 112,
     featured: false,
     date: "2026-08-07",
     pdf: "#"
   },
 
-  {
-    id: "biyoloji-11-sistemler",
-    title: "İnsan Fizyolojisi",
-    subject: "Biyoloji",
-    grade: "11. Sınıf",
-    category: "Ders Notu",
-    description:
-      "İnsan vücudundaki sistemler ve bu sistemlerin temel görevleri.",
-    topics: [
-      "Sinir sistemi",
-      "Dolaşım",
-      "Solunum",
-      "Sindirim"
-    ],
-    icon: "🧬",
-    views: 520,
-    featured: false,
-    date: "2026-08-06",
-    pdf: "#"
-  },
 
-
-  /* ===================================================
+  /* =====================================================
      12. SINIF
-  =================================================== */
+  ===================================================== */
 
   {
-    id: "mat-12-limit",
+    id: "12-matematik-limit",
     title: "Limit",
     subject: "Matematik",
     grade: "12. Sınıf",
     category: "Ders Notu",
-    description:
-      "Limit kavramı, limit alma kuralları ve temel örnekler.",
+    description: "Limit kavramı ve temel limit işlemleri.",
     topics: [
       "Limit",
-      "Sağdan limit",
-      "Soldan limit",
-      "Limit kuralları"
+      "Fonksiyon",
+      "Süreklilik"
     ],
-    icon: "📐",
-    views: 910,
+    icon: "∞",
+    views: 315,
     featured: true,
     date: "2026-08-09",
     pdf: "#"
   },
 
   {
-    id: "mat-12-turev",
+    id: "12-matematik-turev",
     title: "Türev",
     subject: "Matematik",
     grade: "12. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Türev kavramı, türev alma kuralları ve temel uygulamalar.",
+    category: "Ders Notu",
+    description: "Türev kavramı ve temel türev kuralları.",
     topics: [
       "Türev",
-      "Türev alma",
       "Türev kuralları",
-      "Uygulamalar"
+      "Fonksiyon",
+      "Değişim"
     ],
-    icon: "∫",
-    views: 780,
+    icon: "📈",
+    views: 286,
     featured: true,
     date: "2026-08-08",
     pdf: "#"
   },
 
   {
-    id: "edebiyat-12-edebiyat",
-    title: "Türk Edebiyatında Dönemler",
-    subject: "Türk Dili ve Edebiyatı",
-    grade: "12. Sınıf",
-    category: "Ders Notu",
-    description:
-      "Türk edebiyatının önemli dönemleri, sanatçıları ve eserleri.",
-    topics: [
-      "Edebiyat dönemleri",
-      "Sanatçılar",
-      "Eserler"
-    ],
-    icon: "📖",
-    views: 690,
-    featured: true,
-    date: "2026-08-07",
-    pdf: "#"
-  },
-
-  {
-    id: "fizik-12-dalga",
-    title: "Dalgalar",
+    id: "12-fizik-modern",
+    title: "Modern Fiziğe Giriş",
     subject: "Fizik",
     grade: "12. Sınıf",
-    category: "Konu Özeti",
-    description:
-      "Dalgaların temel özellikleri, dalga hareketi ve dalga çeşitleri.",
-    topics: [
-      "Dalga",
-      "Frekans",
-      "Genlik",
-      "Dalga boyu"
-    ],
-    icon: "🌊",
-    views: 470,
-    featured: false,
-    date: "2026-08-06",
-    pdf: "#"
-  },
-
-  {
-    id: "kimya-12-organik",
-    title: "Organik Kimya",
-    subject: "Kimya",
-    grade: "12. Sınıf",
     category: "Ders Notu",
-    description:
-      "Organik bileşiklerin temel özellikleri ve önemli bileşik türleri.",
+    description: "Modern fiziğin temel kavramlarına giriş.",
     topics: [
-      "Organik kimya",
-      "Hidrokarbonlar",
-      "Alkoller",
-      "Organik bileşikler"
+      "Modern fizik",
+      "Atom",
+      "Enerji",
+      "Kuantum"
     ],
-    icon: "🧪",
-    views: 430,
+    icon: "⚛️",
+    views: 141,
     featured: false,
-    date: "2026-08-05",
+    date: "2026-08-07",
     pdf: "#"
   }
 
@@ -917,10 +634,6 @@ const DERSCEP_NOTLARI = [
    YARDIMCI FONKSİYONLAR
 ===================================================== */
 
-
-/**
- * ID'ye göre not getirir.
- */
 function dersCepNotGetir(id) {
 
   return DERSCEP_NOTLARI.find(
@@ -930,9 +643,6 @@ function dersCepNotGetir(id) {
 }
 
 
-/**
- * Sınıfa göre notları getirir.
- */
 function dersCepSinifNotlari(grade) {
 
   return DERSCEP_NOTLARI.filter(
@@ -942,9 +652,6 @@ function dersCepSinifNotlari(grade) {
 }
 
 
-/**
- * Derse göre notları getirir.
- */
 function dersCepDersNotlari(subject) {
 
   return DERSCEP_NOTLARI.filter(
@@ -954,9 +661,6 @@ function dersCepDersNotlari(subject) {
 }
 
 
-/**
- * Öne çıkan notları getirir.
- */
 function dersCepOneCikanNotlar() {
 
   return DERSCEP_NOTLARI.filter(
@@ -966,12 +670,7 @@ function dersCepOneCikanNotlar() {
 }
 
 
-/**
- * En çok görüntülenen notları getirir.
- */
-function dersCepPopulerNotlar(
-  limit = 6
-) {
+function dersCepPopulerNotlar(limit = 6) {
 
   return [...DERSCEP_NOTLARI]
     .sort(
@@ -984,27 +683,19 @@ function dersCepPopulerNotlar(
 }
 
 
-/**
- * Son eklenen notları getirir.
- */
-function dersCepSonNotlar(
-  limit = 6
-) {
+function dersCepSonNotlar(limit = 6) {
 
   return [...DERSCEP_NOTLARI]
     .sort(
       (a, b) =>
-        new Date(b.date) -
-        new Date(a.date)
+        new Date(b.date || 0) -
+        new Date(a.date || 0)
     )
     .slice(0, limit);
 
 }
 
 
-/**
- * Tüm dersleri getirir.
- */
 function dersCepDersleri() {
 
   return [
@@ -1018,80 +709,15 @@ function dersCepDersleri() {
 }
 
 
-/**
- * Tüm sınıfları getirir.
- *
- * Not sayısı olmasa bile
- * 5-12 arasındaki tüm sınıfları döndürür.
- */
 function dersCepSiniflari() {
 
   return [
-    "5. Sınıf",
-    "6. Sınıf",
-    "7. Sınıf",
-    "8. Sınıf",
-    "9. Sınıf",
-    "10. Sınıf",
-    "11. Sınıf",
-    "12. Sınıf"
+    ...new Set(
+      DERSCEP_NOTLARI.map(
+        note => note.grade
+      )
+    )
   ];
-
-}
-
-
-/**
- * Sınıf + ders birlikte filtreleme.
- */
-function dersCepSinifVeDersNotlari(
-  grade,
-  subject
-) {
-
-  return DERSCEP_NOTLARI.filter(
-    note =>
-      note.grade === grade &&
-      note.subject === subject
-  );
-
-}
-
-
-/**
- * Arama.
- */
-function dersCepNotAra(
-  query
-) {
-
-  const q =
-    String(query || "")
-      .toLocaleLowerCase(
-        "tr-TR"
-      );
-
-  return DERSCEP_NOTLARI.filter(
-    note => {
-
-      const text = [
-
-        note.title,
-        note.subject,
-        note.grade,
-        note.category,
-        note.description,
-        ...(note.topics || [])
-
-      ]
-        .join(" ")
-        .toLocaleLowerCase(
-          "tr-TR"
-        );
-
-      return text.includes(q);
-
-    }
-  );
 
 }
 
@@ -1126,10 +752,3 @@ window.dersCepDersleri =
 
 window.dersCepSiniflari =
   dersCepSiniflari;
-
-window.dersCepSinifVeDersNotlari =
-  dersCepSinifVeDersNotlari;
-
-window.dersCepNotAra =
-  dersCepNotAra;
-```
