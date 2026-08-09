@@ -698,7 +698,11 @@ function createNoteCard(note) {
 
   return `
 
-    <article class="note-card">
+   <article
+  class="note-card"
+  onclick="window.location.href='not.html?id=${encodeURIComponent(note.id)}'"
+  style="cursor:pointer;"
+>
 
       <div class="note-cover">
 
