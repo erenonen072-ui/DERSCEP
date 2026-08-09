@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#2563eb"
+  >
+
+  <meta
+    name="description"
+    content="DersCep ders notu"
+  >
+
+  <title>Not | DersCep</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <style>
+
+    /* =========================
+       NOT DETAY
+    ========================= */
+
+    .note-page {
+      padding: 55px 0 80px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 25px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      font-weight: 650;
+    }
+
+    .note-detail {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .note-main {
+      padding: 35px;
+
+      border: 1px solid var(--border);
+      border-radius: 22px;
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+    }
+
+    .note-icon-large {
+      width: 75px;
+      height: 75px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 20px;
+
+      border-radius: 20px;
+
+      background: var(--primary-light);
+
+      font-size: 38px;
+    }
+
+    .note-detail h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.05;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 15px;
+    }
+
+    .note-meta {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-bottom: 25px;
+    }
+
+    .meta-item {
+      padding: 7px 11px;
+
+      border-radius: 999px;
+
+      background: var(--background);
+
+      border: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .note-description-large {
+      color: var(--muted);
+
+      font-size: 16px;
+
+      margin-bottom: 30px;
+    }
+
+    .topic-list {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 12px;
+    }
+
+    .topic {
+      padding: 7px 11px;
+
+      border-radius: 9px;
+
+      background: var(--primary-light);
+
+      color: var(--primary);
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       ACTIONS
+    ========================= */
+
+    .note-actions {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 30px;
+      padding-top: 25px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .favorite-large {
+      min-width: 150px;
+    }
+
+    /* =========================
+       SIDE CARD
+    ========================= */
+
+    .note-side {
+      position: sticky;
+      top: 95px;
+    }
+
+    .side-card {
+      padding: 22px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+    }
+
+    .side-card + .side-card {
+      margin-top: 15px;
+    }
+
+    .side-title {
+      font-size: 16px;
+
+      margin-bottom: 15px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 11px 0;
+
+      border-bottom: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .stat-row:last-child {
+      border-bottom: 0;
+    }
+
+    .stat-row strong {
+      color: var(--text);
+    }
+
+    /* =========================
+       PDF
+    ========================= */
+
+    .pdf-box {
+      padding: 20px;
+
+      border-radius: 15px;
+
+      background: var(--primary-light);
+
+      margin-top: 30px;
+    }
+
+    .pdf-box h3 {
+      margin-bottom: 5px;
+    }
+
+    .pdf-box p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 15px;
+    }
+
+    /* =========================
+       NOT FOUND
+    ========================= */
+
+    .not-found {
+      display: none;
+
+      text-align: center;
+
+      padding: 100px 20px;
+    }
+
+    .not-found.show {
+      display: block;
+    }
+
+    .not-found-icon {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .note-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .note-side {
+        position: static;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .note-main {
+        padding: 22px;
+      }
+
+      .note-actions {
+        flex-direction: column;
+      }
+
+      .note-actions .button {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+  <div class="container navbar">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+        📚
+      </div>
+
+      <div>
+        Ders<span>Cep</span>
+      </div>
+
+    </a>
+
+
+    <nav
+      class="nav-links"
+      aria-label="Ana menü"
+    >
+
+      <a href="index.html">
+        Ana Sayfa
+      </a>
+
+      <a href="siniflar.html">
+        Sınıflar
+      </a>
+
+      <a href="dersler.html">
+        Dersler
+      </a>
+
+      <a
+        href="notlar.html"
+        class="active"
+      >
+        Tüm Notlar
+      </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-button"
+        data-theme-toggle
+        type="button"
+      >
+        🌙
+      </button>
+
+      <button
+        class="icon-button mobile-menu"
+        data-mobile-menu
+        type="button"
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <nav
+    class="mobile-nav"
+    data-mobile-nav
+  >
+
+    <a href="index.html">
+      Ana Sayfa
+    </a>
+
+    <a href="siniflar.html">
+      Sınıflar
+    </a>
+
+    <a href="dersler.html">
+      Dersler
+    </a>
+
+    <a href="notlar.html">
+      Tüm Notlar
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+<section class="note-page">
+
+  <div class="container">
+
+
+    <!-- NOT FOUND -->
+
+    <div
+      class="not-found"
+      id="notFound"
+    >
+
+      <div class="not-found-icon">
+        🔍
+      </div>
+
+      <h1>
+        Not bulunamadı
+      </h1>
+
+      <p style="color:var(--muted);margin:10px 0 20px;">
+        Aradığın ders notu mevcut değil.
+      </p>
+
+      <a
+        href="notlar.html"
+        class="button button-primary"
+      >
+        ← Tüm Notlara Dön
+      </a>
+
+    </div>
+
+
+    <!-- NOTE -->
+
+    <div id="noteContent">
+
+
+      <!-- BREADCRUMB -->
+
+      <div class="breadcrumb">
+
+        <a href="index.html">
+          Ana Sayfa
+        </a>
+
+        <span>
+          /
+        </span>
+
+        <a href="notlar.html">
+          Notlar
+        </a>
+
+        <span>
+          /
+        </span>
+
+        <span id="breadcrumbTitle">
+          Not
+        </span>
+
+      </div>
+
+
+      <div class="note-detail">
+
+
+        <!-- =============================================
+             MAIN NOTE
+        ============================================== -->
+
+        <article class="note-main">
+
+
+          <div
+            class="note-icon-large"
+            id="noteIcon"
+          >
+            📚
+          </div>
+
+
+          <div
+            class="note-meta"
+            id="noteMeta"
+          >
+          </div>
+
+
+          <h1 id="noteTitle">
+            Not yükleniyor...
+          </h1>
+
+
+          <p
+            class="note-description-large"
+            id="noteDescription"
+          >
+          </p>
+
+
+          <!-- TOPICS -->
+
+          <div>
+
+            <strong>
+              Bu notta neler var?
+            </strong>
+
+            <div
+              class="topic-list"
+              id="topicList"
+            >
+            </div>
+
+          </div>
+
+
+          <!-- PDF -->
+
+          <div class="pdf-box">
+
+            <h3>
+              📄 Ders Notunu Aç
+            </h3>
+
+            <p>
+              Hazır olduğunda notun PDF
+              dosyasına buradan ulaşabilirsin.
+            </p>
+
+            <a
+              id="pdfButton"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              class="button button-primary"
+            >
+              📥 PDF'yi Aç
+            </a>
+
+          </div>
+
+
+          <!-- ACTIONS -->
+
+          <div class="note-actions">
+
+            <button
+              class="button button-secondary favorite-large"
+              id="favoriteButton"
+              data-favorite=""
+              type="button"
+            >
+              ♡ Favorilere Ekle
+            </button>
+
+
+            <button
+              class="button button-secondary"
+              id="shareButton"
+              type="button"
+            >
+              🔗 Paylaş
+            </button>
+
+          </div>
+
+
+        </article>
+
+
+
+        <!-- =============================================
+             SIDE
+        ============================================== -->
+
+        <aside class="note-side">
+
+
+          <div class="side-card">
+
+            <h3 class="side-title">
+              📊 Not Bilgileri
+            </h3>
+
+
+            <div class="stat-row">
+
+              <span>
+                Sınıf
+              </span>
+
+              <strong id="sideGrade">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="stat-row">
+
+              <span>
+                Ders
+              </span>
+
+              <strong id="sideSubject">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="stat-row">
+
+              <span>
+                Kategori
+              </span>
+
+              <strong id="sideCategory">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="stat-row">
+
+              <span>
+                Görüntülenme
+              </span>
+
+              <strong id="sideViews">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="stat-row">
+
+              <span>
+                Eklenme
+              </span>
+
+              <strong id="sideDate">
+                -
+              </strong>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="side-card">
+
+            <h3 class="side-title">
+              📚 İlgili Notlar
+            </h3>
+
+
+            <div
+              id="relatedNotes"
+            >
+            </div>
+
+
+          </div>
+
+
+        </aside>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+  <div class="container footer-grid">
+
+
+    <div>
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          📚
+        </div>
+
+        <div>
+          Ders<span>Cep</span>
+        </div>
+
+      </div>
+
+      <p style="margin-top:14px;">
+        Öğrenciler için ücretsiz ders
+        notları ve çalışma kaynakları.
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        DersCep
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="index.html">
+            Ana Sayfa
+          </a>
+        </li>
+
+        <li>
+          <a href="notlar.html">
+            Tüm Notlar
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Keşfet
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="siniflar.html">
+            Sınıflar
+          </a>
+        </li>
+
+        <li>
+          <a href="dersler.html">
+            Dersler
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Bilgi
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="hakkimizda.html">
+            Hakkımızda
+          </a>
+        </li>
+
+        <li>
+          <a href="iletisim.html">
+            İletişim
+          </a>
+        </li>
+
+        <li>
+          <a href="gizlilik.html">
+            Gizlilik
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    © 2026 DersCep · Tüm hakları saklıdır.
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+<script src="data/notes.js"></script>
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+/* =====================================================
+   URL
+===================================================== */
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const noteId =
+  params.get("id");
+
+
+/* =====================================================
+   ELEMENTLER
+===================================================== */
+
+const noteContent =
+  document.getElementById(
+    "noteContent"
+  );
+
+const notFound =
+  document.getElementById(
+    "notFound"
+  );
+
+
+/* =====================================================
+   NOTU BUL
+===================================================== */
+
+const note =
+  dersCepNotGetir(noteId);
+
+
+/* =====================================================
+   NOT YOK
+===================================================== */
+
+if (!note) {
+
+  noteContent.style.display =
+    "none";
+
+  notFound.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   NOT VAR
+===================================================== */
+
+else {
+
+
+  /* SAYFA BAŞLIĞI */
+
+  document.title =
+    `${note.title} | DersCep`;
+
+
+  /* ICON */
+
+  document.getElementById(
+    "noteIcon"
+  ).textContent =
+    note.icon || "📚";
+
+
+  /* BAŞLIK */
+
+  document.getElementById(
+    "noteTitle"
+  ).textContent =
+    note.title;
+
+
+  /* BREADCRUMB */
+
+  document.getElementById(
+    "breadcrumbTitle"
+  ).textContent =
+    note.title;
+
+
+  /* AÇIKLAMA */
+
+  document.getElementById(
+    "noteDescription"
+  ).textContent =
+    note.description;
+
+
+  /* META */
+
+  document.getElementById(
+    "noteMeta"
+  ).innerHTML = `
+
+    <span class="meta-item">
+      🎓 ${note.grade}
+    </span>
+
+    <span class="meta-item">
+      📚 ${note.subject}
+    </span>
+
+    <span class="meta-item">
+      📖 ${note.category}
+    </span>
+
+  `;
+
+
+  /* KONULAR */
+
+  const topicList =
+    document.getElementById(
+      "topicList"
+    );
+
+
+  topicList.innerHTML =
+    (note.topics || [])
+      .map(
+        topic =>
+          `<span class="topic">
+             ${topic}
+           </span>`
+      )
+      .join("");
+
+
+  /* PDF */
+
+  const pdfButton =
+    document.getElementById(
+      "pdfButton"
+    );
+
+
+  if (
+    note.pdf &&
+    note.pdf !== "#"
+  ) {
+
+    pdfButton.href =
+      note.pdf;
+
+  } else {
+
+    pdfButton.href =
+      "#";
+
+    pdfButton.addEventListener(
+      "click",
+      event => {
+
+        event.preventDefault();
+
+        alert(
+          "Bu notun PDF dosyası henüz eklenmedi."
+        );
+
+      }
+    );
+
+  }
+
+
+  /* SIDE */
+
+  document.getElementById(
+    "sideGrade"
+  ).textContent =
+    note.grade;
+
+
+  document.getElementById(
+    "sideSubject"
+  ).textContent =
+    note.subject;
+
+
+  document.getElementById(
+    "sideCategory"
+  ).textContent =
+    note.category;
+
+
+  document.getElementById(
+    "sideViews"
+  ).textContent =
+    Number(
+      note.views || 0
+    ).toLocaleString(
+      "tr-TR"
+    );
+
+
+  document.getElementById(
+    "sideDate"
+  ).textContent =
+    new Date(
+      note.date
+    ).toLocaleDateString(
+      "tr-TR"
+    );
+
+
+  /* ===================================================
+     FAVORİ
+  ================================================== */
+
+  const favoriteButton =
+    document.getElementById(
+      "favoriteButton"
+    );
+
+
+  favoriteButton.dataset.favorite =
+    note.id;
+
+
+  function updateFavoriteText() {
+
+    const active =
+      DersCep.favorites.has(
+        note.id
+      );
+
+
+    favoriteButton.textContent =
+      active
+        ? "♥ Favorilerden Çıkar"
+        : "♡ Favorilere Ekle";
+
+  }
+
+
+  favoriteButton.addEventListener(
+    "click",
+    () => {
+
+      DersCep.favorites.toggle(
+        note.id
+      );
+
+      updateFavoriteText();
+
+    }
+  );
+
+
+  updateFavoriteText();
+
+
+  /* ===================================================
+     GÖRÜNTÜLENME GEÇMİŞİ
+  ================================================== */
+
+  DersCep.history.add(
+    note.id
+  );
+
+
+  /* ===================================================
+     PAYLAŞ
+  ================================================== */
+
+  const shareButton =
+    document.getElementById(
+      "shareButton"
+    );
+
+
+  shareButton.addEventListener(
+    "click",
+    async () => {
+
+
+      const shareData = {
+
+        title:
+          note.title +
+          " | DersCep",
+
+        text:
+          `${note.title} - DersCep`,
+
+        url:
+          window.location.href
+
+      };
+
+
+      try {
+
+        if (
+          navigator.share
+        ) {
+
+          await navigator.share(
+            shareData
+          );
+
+        } else {
+
+          await navigator.clipboard.writeText(
+            window.location.href
+          );
+
+          alert(
+            "Not bağlantısı kopyalandı!"
+          );
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Paylaşma iptal edildi."
+        );
+
+      }
+
+    }
+  );
+
+
+  /* ===================================================
+     İLGİLİ NOTLAR
+  ================================================== */
+
+  const relatedContainer =
+    document.getElementById(
+      "relatedNotes"
+    );
+
+
+  const related =
+    DERSCEP_NOTLARI
+      .filter(
+        item =>
+          item.id !== note.id &&
+          item.subject === note.subject
+      )
+      .slice(0, 4);
+
+
+  if (!related.length) {
+
+    relatedContainer.innerHTML = `
+
+      <p style="color:var(--muted);font-size:13px;">
+        Henüz ilgili not bulunmuyor.
+      </p>
+
+    `;
+
+  } else {
+
+
+    relatedContainer.innerHTML =
+      related
+        .map(
+          item => `
+
+            <a
+              href="not.html?id=${encodeURIComponent(item.id)}"
+              style="
+                display:block;
+                padding:12px 0;
+                border-bottom:1px solid var(--border);
+              "
+            >
+
+              <strong
+                style="
+                  display:block;
+                  font-size:14px;
+                "
+              >
+                ${item.icon || "📚"}
+                ${item.title}
+              </strong>
+
+              <span
+                style="
+                  display:block;
+                  color:var(--muted);
+                  font-size:12px;
+                  margin-top:3px;
+                "
+              >
+                ${item.grade}
+                ·
+                👁️ ${item.views}
+              </span>
+
+            </a>
+
+          `
+        )
+        .join("");
+
+  }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
