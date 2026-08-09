@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#2563eb"
+  >
+
+  <meta
+    name="description"
+    content="DersCep tüm ders notları. Sınıfına ve dersine göre ücretsiz ders notlarını keşfet."
+  >
+
+  <title>Tüm Ders Notları | DersCep</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <style>
+
+    /* =========================
+       NOTLAR SAYFASI
+    ========================= */
+
+    .notes-page {
+      padding: 55px 0 80px;
+    }
+
+    .page-header {
+      margin-bottom: 30px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* =========================
+       FILTER PANEL
+    ========================= */
+
+    .filter-panel {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 12px;
+
+      padding: 16px;
+
+      margin-bottom: 35px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+    }
+
+    .filter-search {
+      display: flex;
+      align-items: center;
+
+      min-width: 0;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: var(--background);
+    }
+
+    .filter-search span {
+      padding-left: 13px;
+    }
+
+    .filter-search input {
+      width: 100%;
+
+      min-width: 0;
+
+      padding: 12px;
+
+      border: 0;
+      outline: 0;
+
+      background: transparent;
+
+      color: var(--text);
+    }
+
+    .filter-select {
+      width: 100%;
+
+      padding: 12px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      outline: none;
+
+      background: var(--background);
+      color: var(--text);
+
+      cursor: pointer;
+    }
+
+    .filter-select:focus,
+    .filter-search:focus-within {
+      border-color: var(--primary);
+    }
+
+    /* =========================
+       RESULT INFO
+    ========================= */
+
+    .results-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+    }
+
+    .results-count {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .results-count strong {
+      color: var(--text);
+    }
+
+    /* =========================
+       EMPTY
+    ========================= */
+
+    .empty-state {
+      display: none;
+
+      padding: 70px 20px;
+
+      text-align: center;
+
+      border: 1px dashed var(--border);
+      border-radius: 18px;
+
+      background: var(--surface);
+    }
+
+    .empty-state.show {
+      display: block;
+    }
+
+    .empty-icon {
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
+
+    .empty-state h2 {
+      margin-bottom: 6px;
+    }
+
+    .empty-state p {
+      color: var(--muted);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .filter-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .filter-search {
+        grid-column: 1 / -1;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .notes-page {
+        padding-top: 35px;
+      }
+
+      .filter-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-search {
+        grid-column: auto;
+      }
+
+      .results-bar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+  <div class="container navbar">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+        📚
+      </div>
+
+      <div>
+        Ders<span>Cep</span>
+      </div>
+
+    </a>
+
+
+    <nav
+      class="nav-links"
+      aria-label="Ana menü"
+    >
+
+      <a href="index.html">
+        Ana Sayfa
+      </a>
+
+      <a href="siniflar.html">
+        Sınıflar
+      </a>
+
+      <a href="dersler.html">
+        Dersler
+      </a>
+
+      <a
+        href="notlar.html"
+        class="active"
+      >
+        Tüm Notlar
+      </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-button"
+        data-theme-toggle
+        type="button"
+        aria-label="Karanlık moda geç"
+      >
+        🌙
+      </button>
+
+      <button
+        class="icon-button mobile-menu"
+        data-mobile-menu
+        type="button"
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <nav
+    class="mobile-nav"
+    data-mobile-nav
+  >
+
+    <a href="index.html">
+      Ana Sayfa
+    </a>
+
+    <a href="siniflar.html">
+      Sınıflar
+    </a>
+
+    <a href="dersler.html">
+      Dersler
+    </a>
+
+    <a href="notlar.html">
+      Tüm Notlar
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+<section class="notes-page">
+
+  <div class="container">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+      <h1>
+        Tüm Ders Notları
+      </h1>
+
+      <p>
+        İhtiyacın olan notu bul,
+        çalışmaya hemen başla.
+      </p>
+
+    </div>
+
+
+    <!-- =================================================
+         FILTER PANEL
+    ================================================== -->
+
+    <div class="filter-panel">
+
+
+      <!-- SEARCH -->
+
+      <div class="filter-search">
+
+        <span>
+          🔎
+        </span>
+
+        <input
+          type="search"
+          id="noteSearch"
+          placeholder="Not, konu veya ders ara..."
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <!-- GRADE -->
+
+      <select
+        class="filter-select"
+        id="gradeFilter"
+      >
+
+        <option value="">
+          Tüm Sınıflar
+        </option>
+
+      </select>
+
+
+      <!-- SUBJECT -->
+
+      <select
+        class="filter-select"
+        id="subjectFilter"
+      >
+
+        <option value="">
+          Tüm Dersler
+        </option>
+
+      </select>
+
+
+      <!-- SORT -->
+
+      <select
+        class="filter-select"
+        id="sortFilter"
+      >
+
+        <option value="popular">
+          En Popüler
+        </option>
+
+        <option value="newest">
+          En Yeni
+        </option>
+
+        <option value="oldest">
+          En Eski
+        </option>
+
+        <option value="az">
+          A → Z
+        </option>
+
+        <option value="za">
+          Z → A
+        </option>
+
+      </select>
+
+
+    </div>
+
+
+    <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+    <div class="results-bar">
+
+      <div
+        class="results-count"
+        id="resultsCount"
+      >
+        Notlar yükleniyor...
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         NOTES
+    ================================================== -->
+
+    <div
+      class="grid grid-3"
+      id="notesGrid"
+    >
+
+    </div>
+
+
+    <!-- =================================================
+         EMPTY
+    ================================================== -->
+
+    <div
+      class="empty-state"
+      id="emptyState"
+    >
+
+      <div class="empty-icon">
+        🔍
+      </div>
+
+      <h2>
+        Not bulunamadı
+      </h2>
+
+      <p>
+        Arama veya filtrelerini değiştirerek
+        tekrar deneyebilirsin.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+  <div class="container footer-grid">
+
+
+    <div>
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          📚
+        </div>
+
+        <div>
+          Ders<span>Cep</span>
+        </div>
+
+      </div>
+
+      <p style="margin-top:14px;">
+        Öğrenciler için ücretsiz ders
+        notları ve çalışma kaynakları.
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        DersCep
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="index.html">
+            Ana Sayfa
+          </a>
+        </li>
+
+        <li>
+          <a href="notlar.html">
+            Tüm Notlar
+          </a>
+        </li>
+
+        <li>
+          <a href="siniflar.html">
+            Sınıflar
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Dersler
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="dersler.html">
+            Tüm Dersler
+          </a>
+        </li>
+
+        <li>
+          <a href="notlar.html">
+            Konu Notları
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Bilgi
+      </strong>
+
+      <ul>
+
+        <li>
+          <a href="hakkimizda.html">
+            Hakkımızda
+          </a>
+        </li>
+
+        <li>
+          <a href="iletisim.html">
+            İletişim
+          </a>
+        </li>
+
+        <li>
+          <a href="gizlilik.html">
+            Gizlilik
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    © 2026 DersCep · Tüm hakları saklıdır.
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+<script src="data/notes.js"></script>
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+/* =====================================================
+   ELEMENTLER
+===================================================== */
+
+const notesGrid =
+  document.getElementById(
+    "notesGrid"
+  );
+
+const emptyState =
+  document.getElementById(
+    "emptyState"
+  );
+
+const resultsCount =
+  document.getElementById(
+    "resultsCount"
+  );
+
+const searchInput =
+  document.getElementById(
+    "noteSearch"
+  );
+
+const gradeFilter =
+  document.getElementById(
+    "gradeFilter"
+  );
+
+const subjectFilter =
+  document.getElementById(
+    "subjectFilter"
+  );
+
+const sortFilter =
+  document.getElementById(
+    "sortFilter"
+  );
+
+
+/* =====================================================
+   NOT KARTI
+===================================================== */
+
+function createNoteCard(note) {
+
+  return `
+
+    <article class="note-card">
+
+      <div class="note-cover">
+
+        ${note.icon || "📚"}
+
+      </div>
+
+
+      <div class="note-body">
+
+
+        <span class="note-tag">
+          ${note.grade}
+        </span>
+
+
+        <h3 class="note-title">
+          ${note.title}
+        </h3>
+
+
+        <p class="note-description">
+          ${note.description}
+        </p>
+
+
+        <div class="note-footer">
+
+          <span>
+
+            ${note.subject}
+
+            ·
+
+            👁️ ${note.views}
+
+          </span>
+
+
+          <button
+            class="favorite-button"
+            data-favorite="${note.id}"
+            type="button"
+            aria-label="Favorilere ekle"
+          >
+            ♡
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =====================================================
+   FİLTRELERİ DOLDUR
+===================================================== */
+
+function populateFilters() {
+
+
+  /* SINIFLAR */
+
+  const grades =
+    dersCepSiniflari();
+
+
+  grades.forEach(grade => {
+
+    const option =
+      document.createElement(
+        "option"
+      );
+
+    option.value =
+      grade;
+
+    option.textContent =
+      grade;
+
+    gradeFilter.appendChild(
+      option
+    );
+
+  });
+
+
+  /* DERSLER */
+
+  const subjects =
+    dersCepDersleri();
+
+
+  subjects.forEach(subject => {
+
+    const option =
+      document.createElement(
+        "option"
+      );
+
+    option.value =
+      subject;
+
+    option.textContent =
+      subject;
+
+    subjectFilter.appendChild(
+      option
+    );
+
+  });
+
+}
+
+
+/* =====================================================
+   URL FİLTRELERİ
+===================================================== */
+
+function loadUrlFilters() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const search =
+    params.get("search");
+
+  const grade =
+    params.get("grade");
+
+  const subject =
+    params.get("subject");
+
+
+  if (search) {
+
+    searchInput.value =
+      search;
+
+  }
+
+
+  if (grade) {
+
+    gradeFilter.value =
+      grade;
+
+  }
+
+
+  if (subject) {
+
+    subjectFilter.value =
+      subject;
+
+  }
+
+}
+
+
+/* =====================================================
+   NOTLARI RENDER
+===================================================== */
+
+function renderNotes() {
+
+
+  let notes =
+    [...DERSCEP_NOTLARI];
+
+
+  /* ARAMA */
+
+  const query =
+    searchInput.value.trim();
+
+
+  if (query) {
+
+    notes =
+      DersCep.search.filterNotes(
+        notes,
+        query
+      );
+
+  }
+
+
+  /* SINIF */
+
+  const grade =
+    gradeFilter.value;
+
+
+  if (grade) {
+
+    notes =
+      notes.filter(
+        note =>
+          note.grade === grade
+      );
+
+  }
+
+
+  /* DERS */
+
+  const subject =
+    subjectFilter.value;
+
+
+  if (subject) {
+
+    notes =
+      notes.filter(
+        note =>
+          note.subject === subject
+      );
+
+  }
+
+
+  /* SIRALAMA */
+
+  const sort =
+    sortFilter.value;
+
+
+  if (sort === "popular") {
+
+    notes.sort(
+      (a, b) =>
+        b.views - a.views
+    );
+
+  }
+
+
+  if (sort === "newest") {
+
+    notes.sort(
+      (a, b) =>
+        new Date(b.date) -
+        new Date(a.date)
+    );
+
+  }
+
+
+  if (sort === "oldest") {
+
+    notes.sort(
+      (a, b) =>
+        new Date(a.date) -
+        new Date(b.date)
+    );
+
+  }
+
+
+  if (sort === "az") {
+
+    notes.sort(
+      (a, b) =>
+        a.title.localeCompare(
+          b.title,
+          "tr"
+        )
+    );
+
+  }
+
+
+  if (sort === "za") {
+
+    notes.sort(
+      (a, b) =>
+        b.title.localeCompare(
+          a.title,
+          "tr"
+        )
+    );
+
+  }
+
+
+  /* SONUÇ SAYISI */
+
+  resultsCount.innerHTML = `
+
+    <strong>
+      ${notes.length}
+    </strong>
+
+    not bulundu.
+
+  `;
+
+
+  /* BOŞ */
+
+  if (!notes.length) {
+
+    notesGrid.innerHTML = "";
+
+    emptyState.classList.add(
+      "show"
+    );
+
+    return;
+
+  }
+
+
+  emptyState.classList.remove(
+    "show"
+  );
+
+
+  /* KARTLAR */
+
+  notesGrid.innerHTML =
+    notes
+      .map(createNoteCard)
+      .join("");
+
+
+  /* FAVORİLER */
+
+  DersCep.favoriteButtons.init();
+
+
+}
+
+
+/* =====================================================
+   EVENTLER
+===================================================== */
+
+searchInput.addEventListener(
+  "input",
+  renderNotes
+);
+
+
+gradeFilter.addEventListener(
+  "change",
+  renderNotes
+);
+
+
+subjectFilter.addEventListener(
+  "change",
+  renderNotes
+);
+
+
+sortFilter.addEventListener(
+  "change",
+  renderNotes
+);
+
+
+/* =====================================================
+   BAŞLAT
+===================================================== */
+
+populateFilters();
+
+loadUrlFilters();
+
+renderNotes();
+
+</script>
+
+
+</body>
+
+</html>
